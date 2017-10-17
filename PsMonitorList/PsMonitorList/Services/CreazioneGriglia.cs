@@ -11,12 +11,9 @@ namespace PsMonitorList.Services
     class CreazioneGriglia
     {
       
-        public async static void CreaGriglia(Grid grigliaPrincipale)
+        public async static void CreaGriglia(Grid grigliaPrincipale,List<RecordBean> lista)
         {
             int riga = 0, colonna = 0;
-            List<RecordBean> ListaRisultato = new List<RecordBean>();
-            
-            
             for(int i=0; i<5;i++)
             {
                 grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
@@ -26,16 +23,14 @@ namespace PsMonitorList.Services
                 grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 
             }
-
             for ( riga=0;riga<5;riga++)
             {
-                
                 var stack_vertical = new StackLayout
                 {
                     Orientation = StackOrientation.Vertical,
                     BackgroundColor = Color.LightGray
                 };
-                Grid grigliaCodiciNominativi = await CreazioneGrigliaCodiceNominativi.GrigliaCodiceNominativi(RisultatoConnessione);
+                Grid grigliaCodiciNominativi = await CreazioneGrigliaCodiceNominativi.GrigliaCodiceNominativi(lista);
                 stack_vertical.Children.Add(grigliaPrincipale);
                 grigliaPrincipale.Children.Add(grigliaCodiciNominativi,colonna,riga);
             }
@@ -48,21 +43,13 @@ namespace PsMonitorList.Services
                     Orientation = StackOrientation.Vertical,
                     BackgroundColor = Color.LightGray
                 };
-
                 stack_verticalDue.Children.Add(grigliaPrincipale);
-                Grid grigliaNominativi = await CreazioneGrigliaNominativi.GrigliaNominativi(RisultatoConnessione);
-
+                Grid grigliaNominativi = await CreazioneGrigliaNominativi.GrigliaNominativi(lista);
                 grigliaPrincipale.Children.Add(grigliaNominativi, colonna, riga);
             }
 
         }
-        public async Task<List<RecordBean>> RisultatoConnessione()
-        {
-            List<RecordBean> RisultatoConnessione = new List<RecordBean>();
-            Connessioni<RecordBean> connessione = new Connessioni<RecordBean>();
-            RisultatoConnessione = await connessione.GetJson(URL.URLConnessione);
-            return RisultatoConnessione;
-        }
+ 
     }
    
 }

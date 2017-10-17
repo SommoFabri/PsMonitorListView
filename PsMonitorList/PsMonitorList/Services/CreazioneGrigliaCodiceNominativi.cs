@@ -10,7 +10,7 @@ namespace PsMonitorList.Services
 {
     class CreazioneGrigliaCodiceNominativi
     {
-        public async static Task<Grid> GrigliaCodiceNominativi(List<RecordBean> lista)
+        public async static Task<Grid> GrigliaCodiceNominativi( List<RecordBean> lista)
         {
             List<string> codiceNominativi = new List<string>();
             int row = 0;
@@ -59,9 +59,9 @@ namespace PsMonitorList.Services
 
                
             }
-            return grigliaCodiceNominativi;
+             return grigliaCodiceNominativi;
         }
 
-       
+  
     }
 }
