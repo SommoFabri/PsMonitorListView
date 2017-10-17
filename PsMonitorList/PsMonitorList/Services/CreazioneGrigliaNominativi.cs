@@ -11,20 +11,28 @@ namespace PsMonitorList.Services
 {
     class CreazioneGrigliaNominativi
     {
-        public async static void GrigliaNominativi(Grid grigliaNominativi)
+        public async static Task<Grid> GrigliaNominativi(List<RecordBean> lista)
         {
-            List<RecordBean> lista = new List<RecordBean>();
+            
             List<string> cognomi = new List<string>();
+            List<string> nomi = new List<string>();
+            List<string> eta = new List<string>();
             int row = 0;
             int colonna = 0;
             string cognome = "";
             string immagine = "rettangoloA.png";
-            lista = await RisultatoConnessione();
-
+        
+            var grigliaNominativi = new Grid
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
+            };
             foreach (var i in lista)
             {
                 cognomi.Add(i.cognome);
-
+                nomi.Add(i.nome);
+                eta.Add(i.eta);
+                
             }
             colonna = 0;
 
@@ -42,35 +50,40 @@ namespace PsMonitorList.Services
                 {
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    Source = immagine
+                    Source = immagine,
+                    Aspect=Aspect.Fill
                 };
 
                 var labelCognome = new Label
                 {
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    Text = cognomi[j],
+                    Text = cognomi[j].Substring(0,1)+"."+" "+nomi[j].Substring(0, 1) + ".",
                     TextColor = Color.Black
                 };
+                var labelEta = new Label
+                {
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.End,
+                    Text = eta[j],
+                    TextColor = Color.Black
+                };
+                var stack = new StackLayout
+                {
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center
+                };
                 row++;
+               
+                stack.Children.Add(labelCognome);
+                stack.Children.Add(labelEta);
+                grigliaNominativi.Children.Add(image,colonna,row);
+                grigliaNominativi.Children.Add(stack, colonna, row);
 
-                grigliaNominativi.Children.Add(image, colonna, row);
-                grigliaNominativi.Children.Add(labelCognome, colonna, row);
-
+                
             }
-
-
-
-
+            return grigliaNominativi;
         }
-        public async static Task<List<RecordBean>> RisultatoConnessione()
-        {
-
-            Connessioni<RecordBean> connessioni = new Connessioni<RecordBean>();
-
-            var listaUno = await connessioni.GetJson(URL.URLConnessione);
-            return listaUno;
-
-        }
+      
     }
 }

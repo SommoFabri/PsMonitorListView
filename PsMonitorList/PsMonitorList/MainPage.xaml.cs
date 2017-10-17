@@ -20,9 +20,9 @@ namespace PsMonitorList
 
 
         }
-        public async void riempimento()
+        public  void riempimento()
         {
-            CreazioneGrigliaNominativi.GrigliaNominativi(GrigliaNominativi);
+            CreazioneGriglia.CreaGriglia(GrigliaNominativi);
 
         }
     }
