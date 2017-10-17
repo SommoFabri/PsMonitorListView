@@ -12,24 +12,18 @@
                 <Label Text="{Binding DateTime, StringFormat='{0:MMMM d, yyyy HH:mm:ss }'}"
                         FontSize="Large">
                     <Label.BindingContext>
-                        <local:ClockViewModel />
+                        <local:ClockViewModel/>
                     </Label.BindingContext>
                 </Label>
             </StackLayout>
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  BackgroundColor="#13a0ec" Padding="5,5,5,5">
             <Label VerticalOptions="Center" HorizontalOptions="Start" Text="Pazienti in Pronto Soccorso" FontSize="Large" />
-
-
             <StackLayout BackgroundColor="Blue" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="ciao"></Label>
             </StackLayout>
-
         </StackLayout>
         <StackLayout>
             <Grid x:Name="GrigliaNominativi" BackgroundColor="Blue"></Grid>
         </StackLayout>
-
     </StackLayout>
-
 </ContentPage>
