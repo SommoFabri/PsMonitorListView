@@ -24,8 +24,7 @@ namespace PsMonitorList.Services
         
             var grigliaNominativi = new Grid
             {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Center
             };
             foreach (var i in lista)
             {
@@ -34,54 +33,23 @@ namespace PsMonitorList.Services
                 eta.Add(i.eta);
                 
             }
-            colonna = 0;
-
+            grigliaNominativi.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+            grigliaNominativi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
             for (int j = 0; j < 5; j++)
             {
-                grigliaNominativi.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-
-            }
-
-            grigliaNominativi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            for (int j = 0; j < 5; j++)
-            {
-
-                var image = new Image
-                {
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
-                    Source = immagine,
-                    Aspect=Aspect.Fill
-                };
 
                 var labelCognome = new Label
                 {
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
-                    Text = cognomi[j].Substring(0,1)+"."+" "+nomi[j].Substring(0, 1) + ".",
+                    Text = cognomi[j].Substring(0,1)+"."+" "+nomi[j].Substring(0, 1) + "." +" età: "+eta[j],
                     TextColor = Color.Black
                 };
-                var labelEta = new Label
-                {
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.End,
-                    Text = eta[j],
-                    TextColor = Color.Black
-                };
-                var stack = new StackLayout
-                {
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center
-                };
+                grigliaNominativi.Children.Add(labelCognome, colonna, row);
                 row++;
-               
-                stack.Children.Add(labelCognome);
-                stack.Children.Add(labelEta);
-                grigliaNominativi.Children.Add(image,colonna,row);
-                grigliaNominativi.Children.Add(stack, colonna, row);
 
-                
             }
+            colonna = 0;
             return grigliaNominativi;
         }
       
