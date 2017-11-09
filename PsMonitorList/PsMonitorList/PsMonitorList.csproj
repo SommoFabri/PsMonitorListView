@@ -38,15 +38,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Costants\Colori.cs" />
+    <Compile Include="Costants\Global.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelView\ClockViewModel.cs" />
+    <Compile Include="ServiceComparator\DataPrimaRichiestaComparator.cs" />
     <Compile Include="ModelView\PsMonitorListViewModel.cs" />
     <Compile Include="Model\ElencoPasientiBO.cs" />
     <Compile Include="Model\RecordBean.cs" />
     <Compile Include="Model\URL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceComparator\DataAccettazioneComparator.cs" />
+    <Compile Include="ServiceComparator\DataDimissioniComparator.cs" />
+    <Compile Include="ServiceComparator\DataPresaInCaricoComparator.cs" />
     <Compile Include="Services\Connessioni.cs" />
     <Compile Include="Services\CreazioneGriglia.cs" />
     <Compile Include="Services\CreazioneGrigliaCodiceNominativi.cs" />

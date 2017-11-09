@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PsMonitorList.Model
 {
-    class RecordBean
+    public class RecordBean
     {
-        public string cartella { get; set; }
+        public string cartella { get; set;}
         public string colore { get; set; }
         public string cognome { get; set; }
         public string nome { get; set; }
@@ -31,6 +31,7 @@ namespace PsMonitorList.Model
         public string salaprimotriage { get; set; }
         public string modalitadimissione { get; set; }
     }
+    
 }
 /*          "cartella": 25103,
             "colore": "Verde",
