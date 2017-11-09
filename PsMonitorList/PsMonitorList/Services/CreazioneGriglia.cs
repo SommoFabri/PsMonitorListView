@@ -24,6 +24,9 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                     grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
 
+                    Grid grigliaInVisita = await CreazioneGrigliaInVisita.GrigliaInVisita(Appoggio);
+                    Grid grigliaIngresso = await CreazioneGrigliaIngresso.GrigliaIngresso(Appoggio);
+                    Grid grigliaStato = await CreazioneGrigliaStato.GrigliaStato(Appoggio);
                     Grid grigliaCodiciNominativi = await CreazioneGrigliaCodiceNominativi.GrigliaCodiceNominativi(Appoggio);
                     Grid grigliaNominativi = await CreazioneGrigliaNominativi.GrigliaNominativi(Appoggio);
 
@@ -81,6 +84,11 @@ namespace PsMonitorList.Services
                     stackNominativiOrizzonatale.Children.Add(grigliaNominativi);
                     stackNominativi.Children.Add(stackNominativiOrizzonatale);
                     grigliaPrincipale.Children.Add(stackNominativi, 0, 1);
+                    grigliaPrincipale.Children.Add(grigliaStato, 2, 1);
+                    grigliaPrincipale.Children.Add(grigliaIngresso, 3, 1);
+                    grigliaPrincipale.Children.Add(grigliaInVisita, 4, 1);
+
+
                     Appoggio.Clear();
                     listaProva.Add(grigliaPrincipale);
                 }
@@ -91,6 +99,9 @@ namespace PsMonitorList.Services
                          grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                          grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
 
+                         Grid grigliaInVisita = await CreazioneGrigliaInVisita.GrigliaInVisita(Appoggio);
+                         Grid grigliaIngresso = await CreazioneGrigliaIngresso.GrigliaIngresso(Appoggio);
+                         Grid grigliaStato = await CreazioneGrigliaStato.GrigliaStato(Appoggio);
                          Grid grigliaCodiciNominativi = await CreazioneGrigliaCodiceNominativi.GrigliaCodiceNominativi(Appoggio);
                          Grid grigliaNominativi = await CreazioneGrigliaNominativi.GrigliaNominativi(Appoggio);
 
@@ -148,7 +159,11 @@ namespace PsMonitorList.Services
                          stackNominativiOrizzonatale.Children.Add(grigliaNominativi);
                          stackNominativi.Children.Add(stackNominativiOrizzonatale);
                          grigliaPrincipale.Children.Add(stackNominativi, 0, 1);
-                         listaProva.Add(grigliaPrincipale);}
+                        grigliaPrincipale.Children.Add(grigliaStato, 2, 1);
+                        grigliaPrincipale.Children.Add(grigliaIngresso, 3, 1);
+                grigliaPrincipale.Children.Add(grigliaInVisita, 4, 1);
+
+                listaProva.Add(grigliaPrincipale);}
                 return listaProva;
         }
     }
