@@ -31,7 +31,7 @@ namespace PsMonitorList.Services
             colonna = 0;
             grigliaCodiceNominativi.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
             grigliaCodiceNominativi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < lista.Count; j++)
             {
               switch (codiceColore[j])
                 {

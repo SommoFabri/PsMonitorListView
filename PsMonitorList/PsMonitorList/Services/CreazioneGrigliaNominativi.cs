@@ -35,7 +35,7 @@ namespace PsMonitorList.Services
             }
             grigliaNominativi.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
             grigliaNominativi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < lista.Count; j++)
             {
 
                 var labelCognome = new Label

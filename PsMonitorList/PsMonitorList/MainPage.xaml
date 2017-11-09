@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PsMonitorList"
              x:Class="PsMonitorList.MainPage"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+             xmlns:control="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             NavigationPage.HasNavigationBar="True">
 
     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout Orientation="Horizontal">
@@ -22,8 +24,13 @@
             <StackLayout BackgroundColor="Blue" HorizontalOptions="Center" VerticalOptions="Center">
             </StackLayout>
         </StackLayout>
+        <control:CarouselView x:Name="Carousel">
+            
+        
         <StackLayout Orientation="Vertical">
             <Grid x:Name="GrigliaNominativi"></Grid>
         </StackLayout>
+    
+    </control:CarouselView>
     </StackLayout>
 </ContentPage>

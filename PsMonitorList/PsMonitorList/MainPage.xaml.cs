@@ -19,26 +19,32 @@ namespace PsMonitorList
         {
             InitializeComponent();
             riempimento();
-
-            
-
         }
         public async void riempimento()
         {
             int SlidePosition=0;
             List<RecordBean> lista = await RisultatoConnessione();
-            CarouselView carousel = new CarouselView();
+            List<RecordBean> prova = new List<RecordBean>();
+            ElencoPasientiBO p = new ElencoPasientiBO();
+            foreach (var i in lista)
+            {
+                var a = p.addBean(i);
+                prova.Add(a);
+            }
+            prova = p.getListaAssistitiDaVisualizzare(prova);
+            lista = prova;
+            //CarouselView carousel = new CarouselView();
             /*CreazioneGriglia.CreaGriglia(GrigliaNominativi, lista);*/
             CreazioneGriglia crea = new CreazioneGriglia();
-            MainPageGrid= await crea.CreaGriglia(GrigliaNominativi, lista);
-            carousel.ItemsSource = MainPageGrid;
-            carousel.ItemTemplate = GetDataTemplate();
-            Content = carousel;
+            MainPageGrid = await crea.CreaGriglia(GrigliaNominativi, lista);
+            Carousel.ItemsSource = MainPageGrid;
+            Carousel.ItemTemplate = GetDataTemplate();
+            //Content= carousel;
             Device.StartTimer(TimeSpan.FromSeconds(20), () =>
             {
                 SlidePosition++;
                 if (SlidePosition == MainPageGrid.Count) SlidePosition = 0;
-                carousel.Position = SlidePosition;
+                Carousel.Position = SlidePosition;
                 return true;
             });
 
@@ -58,8 +64,9 @@ namespace PsMonitorList
         {
 
             Connessioni<RecordBean> connessioni = new Connessioni<RecordBean>();
-
-            var listaUno = await connessioni.GetJson(URL.URLConnessione);
+            URL urllone = new URL();
+            string URL = urllone.creastringa();
+            var listaUno = await connessioni.GetJson(URL);
             return listaUno;
 
         }
