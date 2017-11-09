@@ -22,8 +22,8 @@
             <StackLayout BackgroundColor="Blue" HorizontalOptions="Center" VerticalOptions="Center">
             </StackLayout>
         </StackLayout>
-        <StackLayout>
-            <Grid x:Name="GrigliaNominativi" BackgroundColor="Blue"></Grid>
+        <StackLayout Orientation="Vertical">
+            <Grid x:Name="GrigliaNominativi"></Grid>
         </StackLayout>
     </StackLayout>
 </ContentPage>
