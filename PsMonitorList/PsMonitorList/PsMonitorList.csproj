@@ -43,6 +43,7 @@
     </Compile>
     <Compile Include="ModelView\ClockViewModel.cs" />
     <Compile Include="ModelView\PsMonitorListViewModel.cs" />
+    <Compile Include="Model\ElencoPasientiBO.cs" />
     <Compile Include="Model\RecordBean.cs" />
     <Compile Include="Model\URL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
