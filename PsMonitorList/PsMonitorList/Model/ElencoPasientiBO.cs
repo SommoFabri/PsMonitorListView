@@ -14,7 +14,8 @@ namespace PsMonitorList.Model
 
         public RecordBean addBean(RecordBean recordBean)
         {
-            if (recordBean.nome == string.Empty){
+            if (recordBean.nome == string.Empty)
+            {
                 recordBean.nome = "---";
             }
             if (recordBean.cognome == string.Empty)
@@ -79,7 +80,7 @@ namespace PsMonitorList.Model
             }
             if (recordBean.orainvioinobi == string.Empty)
             {
-                    recordBean.orainvioinobi = "---";
+                recordBean.orainvioinobi = "---";
             }
             if (recordBean.orapresaincarico == string.Empty)
             {
@@ -156,11 +157,11 @@ namespace PsMonitorList.Model
             }
             return listaAssistitiDaVisualizzare;
         }
-       // public void addBean(/*JSONObject jsonRecordBean*/)
-       /* {
-            
-        }*/
-        public String getMediaVisita(String colore)
+        // public void addBean(/*JSONObject jsonRecordBean*/)
+        /* {
+
+         }*/
+        public String getMediaVisita(String colore, List<RecordBean> lista)
         {
             String returnValue = "";
             List<RecordBean> listaFiltrati = new List<RecordBean>();
@@ -174,7 +175,7 @@ namespace PsMonitorList.Model
                 if (recordBean.colore.Equals(colore) && !recordBean.stato.Equals("Accettato"))
                 {
                     //System.out.println(recordBean.getCartella() + " - " + recordBean.getColore() + " - " + recordBean.getStato());
-                    if (!recordBean.datapresaincarico.Equals(""))
+                    if (!recordBean.datapresaincarico.Equals("") && !recordBean.datapresaincarico.Equals("---"))
                     {
                         listaFiltrati.Add(recordBean);
                     }
@@ -188,7 +189,7 @@ namespace PsMonitorList.Model
 
                 try
                 {
-                    
+
                     dataAccetazione = DateTime.ParseExact(recordBean.dataaccettazione + " " + recordBean.oraaccettazione + ":00", "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
 
                     dataPresaInCarico = DateTime.ParseExact(recordBean.datapresaincarico + " " + recordBean.orapresaincarico + ":00", "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
@@ -201,8 +202,9 @@ namespace PsMonitorList.Model
                 if (dataLimite.CompareTo(dataPresaInCarico) < 0)
                 {
                     numeroPazientiMedia++;
-                    var i = Convert.ToDouble(dataPresaInCarico - dataAccetazione);
-                    tempoMedio += ((float)(i)) / (60 * 60 * 1000);
+                    var i = dataPresaInCarico - dataAccetazione;
+                    Double y = Convert.ToDouble(i.TotalMilliseconds);
+                    tempoMedio += ((float)(y)) / (60 * 60 * 1000);
 
                 }
 
@@ -219,11 +221,137 @@ namespace PsMonitorList.Model
             //        System.out.println("Media: " + minutiAttesa);
             //        System.out.println("Media: " + Math.floor(mediaAttesa));
             //        System.out.println("Media: " + Math.ceil(mediaAttesa));
-            returnValue = String.Format("%02d", oreAttesa) + "h " + String.Format("%02d", minutiAttesa) + "min";
+            returnValue = oreAttesa.ToString() + "h " + minutiAttesa.ToString() + "min";
+
+            return returnValue;
+        }
+
+        public String getMediaDimissioni(String colore, List<RecordBean> lista)
+        {
+            String returnValue = "";
+            List<RecordBean> listaFiltrati = new List<RecordBean>();
+            DateTime c = DateTime.Now;
+            c.AddHours(-2);
+            DateTime dataLimite = c;
+            float numeroPazientiMedia = 0.0f;
+            float tempoMedio = 0.0f;
+
+            foreach (RecordBean recordBean in lista)
+            {
+                if (recordBean.colore.Equals(colore))
+                {
+                    if (!recordBean.datadimissione.Equals("") && !recordBean.dataprimarichiesta.Equals("") && !recordBean.datadimissione.Equals("---") && !recordBean.dataprimarichiesta.Equals("---"))
+                    {
+                        listaFiltrati.Add(recordBean);
+                    }
+                }
+            }
+            listaFiltrati.Sort(new DataDimissioniComparator());
+
+            foreach (RecordBean recordBean in listaFiltrati)
+            {
+                DateTime dataPrimaRichiesta = DateTime.Now;
+                DateTime dataDimissioni = DateTime.Now;
+
+                try
+                {
+
+                    dataPrimaRichiesta = DateTime.ParseExact(recordBean.dataprimarichiesta + " " + recordBean.oraprimarichiesta + ":00", "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
+
+                    dataDimissioni = DateTime.ParseExact(recordBean.datadimissione + " " + recordBean.oradimissione + ":00", "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
+
+                }
+                catch (Exception e)
+                {
+                    //e.printStackTrace();
+                }
+                if (dataLimite.CompareTo(dataDimissioni) < 0)
+                {
+                    numeroPazientiMedia++;
+                    var i = dataDimissioni - dataPrimaRichiesta;
+                    Double y = Convert.ToDouble(i.TotalMilliseconds);
+                    tempoMedio += ((float)(y)) / (60 * 60 * 1000);
+
+                }
+
+
+            }
+            float mediaAttesa = (tempoMedio / numeroPazientiMedia);
+            long oreAttesa = (long)mediaAttesa;
+            long minutiAttesa = (long)(60 * (mediaAttesa - oreAttesa));
+            oreAttesa = (oreAttesa < 0) ? 0 : oreAttesa;
+            minutiAttesa = (minutiAttesa < 0) ? 0 : minutiAttesa;
+            //        System.out.println("Media: " + mediaAttesa);
+            //        System.out.println("Media: " + oreAttesa);
+            //        System.out.println("Media: " + minutiAttesa);
+            //        System.out.println("Media: " + Math.floor(mediaAttesa));
+            //        System.out.println("Media: " + Math.ceil(mediaAttesa));
+            returnValue = oreAttesa.ToString() + "h " + minutiAttesa.ToString() + "min";
+
+            return returnValue;
+        }
+
+        public String getMediaReferti(String colore, List<RecordBean> lista)
+        {
+            String returnValue = "";
+            List<RecordBean> listaFiltrati = new List<RecordBean>();
+            DateTime c = DateTime.Now;
+            c.AddHours(-2);
+            DateTime dataLimite = c;
+            float numeroPazientiMedia = 0.0f;
+            float tempoMedio = 0.0f;
+
+            foreach (RecordBean recordBean in lista)
+            {
+                if (recordBean.colore.Equals(colore))
+                {
+                    if (!recordBean.dataprimarichiesta.Equals("") && !recordBean.dataprimarichiesta.Equals("---"))
+                    {
+                        listaFiltrati.Add(recordBean);
+                    }
+
+                }
+            }
+            listaFiltrati.Sort(new DataPrimaRichiestaComparator());
+
+            foreach (RecordBean recordBean in listaFiltrati)
+            {
+                DateTime dataPresaInCarico = DateTime.Now;
+                DateTime dataPrimaRichiesta = DateTime.Now;
+
+                try
+                {
+
+                    dataPresaInCarico = DateTime.ParseExact(recordBean.datapresaincarico + " " + recordBean.orapresaincarico + ":00", "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
+
+                    dataPrimaRichiesta = DateTime.ParseExact(recordBean.dataprimarichiesta + " " + recordBean.oraprimarichiesta + ":00", "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
+                }
+                catch (Exception e)
+                {
+                    //e.printStackTrace();
+                }
+                if (dataLimite.CompareTo(dataPresaInCarico) < 0)
+                {
+                    numeroPazientiMedia++;
+                    var i = dataPrimaRichiesta - dataPresaInCarico;
+                    Double y = Convert.ToDouble(i.TotalMilliseconds);
+                    tempoMedio += ((float)(y)) / (60 * 60 * 1000);
+
+                }
+            }
+            float mediaAttesa = (tempoMedio / numeroPazientiMedia);
+            long oreAttesa = (long)mediaAttesa;
+            long minutiAttesa = (long)(60 * (mediaAttesa - oreAttesa));
+            oreAttesa = (oreAttesa < 0) ? 0 : oreAttesa;
+            minutiAttesa = (minutiAttesa < 0) ? 0 : minutiAttesa;
+            //        System.out.println("Media: " + mediaAttesa);
+            //        System.out.println("Media: " + oreAttesa);
+            //        System.out.println("Media: " + minutiAttesa);
+            //        System.out.println("Media: " + Math.floor(mediaAttesa));
+            //        System.out.println("Media: " + Math.ceil(mediaAttesa));
+            returnValue = oreAttesa.ToString() + "h " + minutiAttesa.ToString() + "min";
 
             return returnValue;
         }
     }
-
-
-    }
+}
