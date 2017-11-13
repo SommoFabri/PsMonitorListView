@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using PsMonitorList.Model;
 using System.Collections;
 
-namespace PsMonitorList.ModelView
+namespace PsMonitorList.ServiceComparator
 {
     class DataPrimaRichiestaComparator : IComparer<RecordBean>
     {
