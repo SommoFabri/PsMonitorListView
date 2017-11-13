@@ -1,4 +1,5 @@
-﻿using PsMonitorList.Model;
+﻿using PsMonitorList.Costants;
+using PsMonitorList.Model;
 using PsMonitorList.Services;
 using System;
 using System.Collections.Generic;
@@ -22,17 +23,19 @@ namespace PsMonitorList
         }
         public async void riempimento()
         {
-            int SlidePosition=0;
-            List<RecordBean> lista = await RisultatoConnessione();
-            List<RecordBean> prova = new List<RecordBean>();
-            ElencoPasientiBO p = new ElencoPasientiBO();
+            int SlidePosition = 0;
+        List<RecordBean> lista = await RisultatoConnessione();
+        List<RecordBean> prova = new List<RecordBean>();
+        ElencoPasientiBO p = new ElencoPasientiBO();
+        ElencoPasientiMedia media = new ElencoPasientiMedia();
+        Colori colori = new Colori();
             foreach (var i in lista)
             {
                 var a = p.addBean(i);
                 prova.Add(a);
             }
             prova = p.getListaAssistitiDaVisualizzare(prova);
-            lista = prova;
+            lista = media.ListaConMedia(prova);
             //CarouselView carousel = new CarouselView();
             /*CreazioneGriglia.CreaGriglia(GrigliaNominativi, lista);*/
             CreazioneGriglia crea = new CreazioneGriglia();
