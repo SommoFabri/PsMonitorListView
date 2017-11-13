@@ -1,4 +1,6 @@
-﻿using PsMonitorList.Model;
+﻿using PsMonitorList.Costants;
+using PsMonitorList.Model;
+using PsMonitorList.ServiceComparator;
 using PsMonitorList.Services;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ namespace PsMonitorList
     {
         public List<Grid> MainPageGrid = new List<Grid>();
 
+
         List<RecordBean> lista = new List<RecordBean>();
         public MainPage()
         {
@@ -26,13 +29,17 @@ namespace PsMonitorList
             List<RecordBean> lista = await RisultatoConnessione();
             List<RecordBean> prova = new List<RecordBean>();
             ElencoPasientiBO p = new ElencoPasientiBO();
+            ElencoPasientiMedia media = new ElencoPasientiMedia();
+            Colori colori = new Colori();
             foreach (var i in lista)
             {
                 var a = p.addBean(i);
                 prova.Add(a);
             }
             prova = p.getListaAssistitiDaVisualizzare(prova);
-            lista = prova;
+            lista = media.ListaConMedia(prova);
+
+
             //CarouselView carousel = new CarouselView();
             /*CreazioneGriglia.CreaGriglia(GrigliaNominativi, lista);*/
             CreazioneGriglia crea = new CreazioneGriglia();
