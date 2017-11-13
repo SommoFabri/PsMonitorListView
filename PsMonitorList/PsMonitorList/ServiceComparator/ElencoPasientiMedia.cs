@@ -73,7 +73,7 @@ namespace PsMonitorList.ServiceComparator
                     else
                     {
                         i.datapresaincarico = "Non Prima di";
-
+                        //per commit
                         i.orapresaincarico = mediaAttesaVisita;
                     }
 

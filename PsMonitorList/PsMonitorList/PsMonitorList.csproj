@@ -53,6 +53,7 @@
     <Compile Include="ServiceComparator\DataAccettazioneComparator.cs" />
     <Compile Include="ServiceComparator\DataDimissioniComparator.cs" />
     <Compile Include="ServiceComparator\DataPresaInCaricoComparator.cs" />
+    <Compile Include="ServiceComparator\ElencoPasientiMedia.cs" />
     <Compile Include="Services\Connessioni.cs" />
     <Compile Include="Services\CreazioneGriglia.cs" />
     <Compile Include="Services\CreazioneGrigliaCodiceNominativi.cs" />
