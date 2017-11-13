@@ -55,12 +55,7 @@
     <Compile Include="ServiceComparator\DataPresaInCaricoComparator.cs" />
     <Compile Include="Services\Connessioni.cs" />
     <Compile Include="Services\CreazioneGriglia.cs" />
-    <Compile Include="Services\CreazioneGrigliaCodiceNominativi.cs" />
-    <Compile Include="Services\CreazioneGrigliaIngresso.cs" />
-    <Compile Include="Services\CreazioneGrigliaInVisita.cs" />
-    <Compile Include="Services\CreazioneGrigliaNominativi.cs" />
     <Compile Include="Services\CreazioneGrigliaStato.cs" />
-    <Compile Include="Services\RisultatoJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
