@@ -43,11 +43,10 @@ namespace PsMonitorList
             //CarouselView carousel = new CarouselView();
             /*CreazioneGriglia.CreaGriglia(GrigliaNominativi, lista);*/
             CreazioneGriglia crea = new CreazioneGriglia();
-            MainPageGrid = await crea.CreaGriglia(GrigliaNominativi, lista);
+            MainPageGrid = await crea.creazioneGriglia(lista);
             Carousel.ItemsSource = MainPageGrid;
             Carousel.ItemTemplate = GetDataTemplate();
-            //Content= carousel;
-            Device.StartTimer(TimeSpan.FromSeconds(20), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(10), () =>
             {
                 SlidePosition++;
                 if (SlidePosition == MainPageGrid.Count) SlidePosition = 0;
@@ -78,39 +77,7 @@ namespace PsMonitorList
 
         }
 
-        /*
-        public AutoSlide()
-        {
-            imageList = new List<Image>();
-            imageList.Add(new Image { Source = ImageSource.FromResource("AutoSlider.Images.1024x1024[1].png") });
-            imageList.Add(new Image { Source = ImageSource.FromResource("AutoSlider.Images.1024x1024[1].png") });
-            imageList.Add(new Image { Source = ImageSource.FromResource("AutoSlider.Images.1024x1024[1].png") });
-
-            CarouselView cv = new CarouselView { ItemsSource = imageList, ItemTemplate = GetDataTemplate() };
-
-            Content = cv;
-
-            Device.StartTimer(TimeSpan.FromSeconds(2), () =>
-            {
-                SlidePosition++;
-                if (SlidePosition == imageList.Count) SlidePosition = 0;
-                cv.Position = SlidePosition;
-                return true;
-            });
-
-        }
-
-        public DataTemplate GetDataTemplate()
-        {
-            return new DataTemplate(() =>
-            {
-                Image v = imageList[Count];
-                Count++;
-                return v;
-            });
-        }
-        */
-
+     
 
     }
 }

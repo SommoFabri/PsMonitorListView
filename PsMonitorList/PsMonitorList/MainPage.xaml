@@ -24,11 +24,11 @@
             <StackLayout BackgroundColor="Blue" HorizontalOptions="Center" VerticalOptions="Center">
             </StackLayout>
         </StackLayout>
-        <control:CarouselView x:Name="Carousel">
+        <control:CarouselView x:Name="Carousel" HorizontalOptions="FillAndExpand">
             
         
-        <StackLayout Orientation="Vertical">
-            <Grid x:Name="GrigliaNominativi"></Grid>
+        <StackLayout Orientation="Vertical" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand">
+            <Grid x:Name="GrigliaNominativi" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"></Grid>
         </StackLayout>
     
     </control:CarouselView>

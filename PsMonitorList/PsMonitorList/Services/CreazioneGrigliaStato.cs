@@ -34,16 +34,21 @@ namespace PsMonitorList.Services
                 {
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Start,
+                    TextColor = Color.Black,
+                    FontAttributes = FontAttributes.Bold,
                     Text = dataAccettazione[j]
                 };
                 var labelStatoOra = new Label
                 {
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Start,
+                    TextColor = Color.Black,
+                    FontAttributes = FontAttributes.Bold,
                     Text = oraAccettazione[j]
                 };
                 var stackLayoutData = new StackLayout
                 {
+
                     Orientation = StackOrientation.Vertical,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center
