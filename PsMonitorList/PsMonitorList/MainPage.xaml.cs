@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using PsMonitorList.ServiceComparator;
 
 namespace PsMonitorList
 {
@@ -28,6 +29,7 @@ namespace PsMonitorList
         List<RecordBean> prova = new List<RecordBean>();
         ElencoPasientiBO p = new ElencoPasientiBO();
         ElencoPasientiMedia media = new ElencoPasientiMedia();
+            
         Colori colori = new Colori();
             foreach (var i in lista)
             {
