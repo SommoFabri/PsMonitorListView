@@ -152,7 +152,7 @@ namespace PsMonitorList.Services
                             VerticalTextAlignment= TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             FontAttributes = FontAttributes.Bold,
-                            Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
+                            Text = Appoggio[j].dataaccettazione + "\n" + Appoggio[j].oraaccettazione,
                             TextColor = Color.Black,
                             BackgroundColor= Color.LightGray
                         };
@@ -163,7 +163,29 @@ namespace PsMonitorList.Services
                             VerticalTextAlignment = TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             FontAttributes = FontAttributes.Bold,
+                            Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
+                            TextColor = Color.Black,
+                            BackgroundColor = Color.LightGray
+                        };
+                        var labelInAttesa = new Label
+                        {
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            VerticalOptions = LayoutOptions.FillAndExpand,
+                            FontAttributes = FontAttributes.Bold,
                             Text = Appoggio[j].dataprimarichiesta + "\n" + Appoggio[j].oraprimarichiesta,
+                            TextColor = Color.Black,
+                            BackgroundColor = Color.LightGray
+                        };
+                        var labelDimissioni = new Label
+                        {
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            VerticalOptions = LayoutOptions.FillAndExpand,
+                            FontAttributes = FontAttributes.Bold,
+                            Text = Appoggio[j].datadimissione + "\n" + Appoggio[j].oradimissione,
                             TextColor = Color.Black,
                             BackgroundColor = Color.LightGray
                         };
@@ -197,6 +219,8 @@ namespace PsMonitorList.Services
                         grigliaPrincipale.Children.Add(labelStato, 1, riga);
                         grigliaPrincipale.Children.Add(labelIngresso, 2, riga);
                         grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
+                        grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
+                        grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
                         riga++;
                     }
                     Appoggio.Clear();
@@ -316,11 +340,10 @@ namespace PsMonitorList.Services
                         VerticalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         FontAttributes = FontAttributes.Bold,
-                        Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
+                        Text = Appoggio[j].dataaccettazione + "\n" + Appoggio[j].oraaccettazione,
                         TextColor = Color.Black,
                         BackgroundColor = Color.LightGray
                     };
-
                     var labelInVisita = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -328,7 +351,29 @@ namespace PsMonitorList.Services
                         VerticalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         FontAttributes = FontAttributes.Bold,
+                        Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
+                        TextColor = Color.Black,
+                        BackgroundColor = Color.LightGray
+                    };
+                    var labelInAttesa = new Label
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        FontAttributes = FontAttributes.Bold,
                         Text = Appoggio[j].dataprimarichiesta + "\n" + Appoggio[j].oraprimarichiesta,
+                        TextColor = Color.Black,
+                        BackgroundColor = Color.LightGray
+                    };
+                    var labelDimissioni = new Label
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        FontAttributes = FontAttributes.Bold,
+                        Text = Appoggio[j].datadimissione + "\n" + Appoggio[j].oradimissione,
                         TextColor = Color.Black,
                         BackgroundColor = Color.LightGray
                     };
@@ -362,6 +407,8 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.Children.Add(labelStato, 1, riga);
                     grigliaPrincipale.Children.Add(labelIngresso, 2, riga);
                     grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
+                    grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
+                    grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
                     riga++;
 
                 }

@@ -26,10 +26,6 @@
         </StackLayout>
         <control:CarouselView x:Name="Carousel" HorizontalOptions="FillAndExpand">
 
-          <!--  <StackLayout Orientation="Vertical" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand">
-                <Grid x:Name="GrigliaNominativi" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"></Grid>
-            </StackLayout> -->
-
         </control:CarouselView>
     </StackLayout>
 </ContentPage>
