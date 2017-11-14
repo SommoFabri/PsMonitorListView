@@ -221,6 +221,8 @@ namespace PsMonitorList.Services
                         grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
                         grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
                         grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
+                        grigliaPrincipale.ColumnSpacing = 1;
+                        grigliaPrincipale.RowSpacing = 2;
                         riga++;
                     }
                     Appoggio.Clear();
@@ -302,7 +304,7 @@ namespace PsMonitorList.Services
                 {
                     var labelCodiciNominativi = new Label
                     {
-                        HorizontalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         VerticalTextAlignment = TextAlignment.Center,
                         HorizontalTextAlignment = TextAlignment.Center,
