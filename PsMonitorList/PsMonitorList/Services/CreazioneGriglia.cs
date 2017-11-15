@@ -300,8 +300,11 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.Children.Add(lblNominativi3, 3, 0);
                     grigliaPrincipale.Children.Add(lblNominativi4, 4, 0);
                     grigliaPrincipale.Children.Add(lblNominativi5, 5, 0);
+
                 for (int j = 0; j < Appoggio.Count; j++)
                 {
+                    grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+
                     var labelCodiciNominativi = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
