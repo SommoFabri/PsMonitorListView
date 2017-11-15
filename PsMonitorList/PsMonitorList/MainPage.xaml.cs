@@ -37,9 +37,7 @@ namespace PsMonitorList
                 prova.Add(a);
             }
             prova = p.getListaAssistitiDaVisualizzare(prova);
-            lista = media.ListaConMedia(prova,lista);
-            //CarouselView carousel = new CarouselView();
-            /*CreazioneGriglia.CreaGriglia(GrigliaNominativi, lista);*/
+            lista = media.ListaConMedia(prova);
             CreazioneGriglia crea = new CreazioneGriglia();
             MainPageGrid = await crea.creazioneGriglia(lista);
             Carousel.ItemsSource = MainPageGrid;
@@ -51,7 +49,6 @@ namespace PsMonitorList
                 Carousel.Position = SlidePosition;
                 return true;
             });
-
 
         }
         public DataTemplate GetDataTemplate()
@@ -66,11 +63,20 @@ namespace PsMonitorList
         }
         async static Task<List<RecordBean>> RisultatoConnessione()
         {
+           List<RecordBean> listaUno = new List<RecordBean>();
 
-            Connessioni<RecordBean> connessioni = new Connessioni<RecordBean>();
-            URL urllone = new URL();
-            string URL = urllone.creastringa();
-            var listaUno = await connessioni.GetJson(URL);
+            try
+            {
+                Connessioni<RecordBean> connessioni = new Connessioni<RecordBean>();
+                URL urllone = new URL();
+                string URL = urllone.creastringa();
+                listaUno = await connessioni.GetJson(URL);
+            }
+            catch (Exception)
+            {
+
+              await  App.Current.MainPage.DisplayAlert("Attenzione", "Errore di connessione ", "riprova");
+            }
             return listaUno;
 
         }
