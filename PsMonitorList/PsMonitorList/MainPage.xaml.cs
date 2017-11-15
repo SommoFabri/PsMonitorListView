@@ -38,8 +38,6 @@ namespace PsMonitorList
             }
             prova = p.getListaAssistitiDaVisualizzare(prova);
             lista = media.ListaConMedia(prova);
-            //CarouselView carousel = new CarouselView();
-            /*CreazioneGriglia.CreaGriglia(GrigliaNominativi, lista);*/
             CreazioneGriglia crea = new CreazioneGriglia();
             MainPageGrid = await crea.creazioneGriglia(lista);
             Carousel.ItemsSource = MainPageGrid;

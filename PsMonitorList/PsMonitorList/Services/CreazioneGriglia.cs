@@ -15,7 +15,7 @@ namespace PsMonitorList.Services
 
         public async Task<List<Grid>> creazioneGriglia(List<RecordBean> lista)
         {
-            string codiceColore, cognomi, nomi, eta, codici, sesso;
+            string codiceColore;
             Color colore = Color.Gray;
             int riga = 1;
 
@@ -114,8 +114,8 @@ namespace PsMonitorList.Services
                     {
                         var labelCodiciNominativi = new Label
                         {
-                            HorizontalOptions = LayoutOptions.Center,
-                            VerticalOptions = LayoutOptions.CenterAndExpand,
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            VerticalOptions = LayoutOptions.FillAndExpand,
                             VerticalTextAlignment= TextAlignment.Center,
                             HorizontalTextAlignment= TextAlignment.Center,
                             FontAttributes = FontAttributes.Bold,
@@ -221,7 +221,7 @@ namespace PsMonitorList.Services
                         grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
                         grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
                         grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
-                        grigliaPrincipale.ColumnSpacing = 1;
+                        grigliaPrincipale.ColumnSpacing = 2;
                         grigliaPrincipale.RowSpacing = 2;
                         riga++;
                     }
@@ -305,7 +305,7 @@ namespace PsMonitorList.Services
                     var labelCodiciNominativi = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
                         VerticalTextAlignment = TextAlignment.Center,
                         HorizontalTextAlignment = TextAlignment.Center,
                         FontAttributes = FontAttributes.Bold,
@@ -411,8 +411,9 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
                     grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
                     grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
+                    grigliaPrincipale.ColumnSpacing = 2;
+                    grigliaPrincipale.RowSpacing = 2;
                     riga++;
-
                 }
 
                 Appoggio.Clear();
