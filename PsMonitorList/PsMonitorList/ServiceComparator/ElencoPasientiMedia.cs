@@ -24,31 +24,31 @@ namespace PsMonitorList.ServiceComparator
         private String mediaAttesaDimissioniVerde;
         private String mediaAttesaDimissioniGiallo;
         private String mediaAttesaDimissioniRosso;
-        public List<RecordBean> ListaConMedia (List<RecordBean> lista)
+        public List<RecordBean> ListaConMedia (List<RecordBean> lista, List<RecordBean> lista1)
         {
             ElencoPasientiBO p = new ElencoPasientiBO();
 
-            mediaAttesaVisitaBianco = p.getMediaVisita(Colori.BIANCO,lista);
-            mediaAttesaVisitaVerde = p.getMediaVisita(Colori.VERDE, lista);
-            mediaAttesaVisitaGiallo = p.getMediaVisita(Colori.GIALLO, lista);
-            mediaAttesaVisitaRosso = p.getMediaVisita(Colori.ROSSO, lista);
+            mediaAttesaVisitaBianco = p.getMediaVisita(Colori.BIANCO,lista1);
+            mediaAttesaVisitaVerde = p.getMediaVisita(Colori.VERDE, lista1);
+            mediaAttesaVisitaGiallo = p.getMediaVisita(Colori.GIALLO, lista1);
+            mediaAttesaVisitaRosso = p.getMediaVisita(Colori.ROSSO, lista1);
 
-            mediaAttesaDimissioniBianco = p.getMediaDimissioni(Colori.BIANCO, lista);
-            mediaAttesaDimissioniVerde = p.getMediaDimissioni(Colori.VERDE, lista);
-            mediaAttesaDimissioniGiallo = p.getMediaDimissioni(Colori.GIALLO, lista);
-            mediaAttesaDimissioniRosso = p.getMediaDimissioni(Colori.ROSSO, lista);
+            mediaAttesaDimissioniBianco = p.getMediaDimissioni(Colori.BIANCO, lista1);
+            mediaAttesaDimissioniVerde = p.getMediaDimissioni(Colori.VERDE, lista1);
+            mediaAttesaDimissioniGiallo = p.getMediaDimissioni(Colori.GIALLO, lista1);
+            mediaAttesaDimissioniRosso = p.getMediaDimissioni(Colori.ROSSO, lista1);
 
-            mediaAttesaRefertiBianco = p.getMediaReferti(Colori.BIANCO, lista);
-            mediaAttesaRefertiVerde = p.getMediaReferti(Colori.VERDE, lista);
-            mediaAttesaRefertiGiallo = p.getMediaReferti(Colori.GIALLO, lista);
-            mediaAttesaRefertiRosso = p.getMediaReferti(Colori.ROSSO, lista);
+            mediaAttesaRefertiBianco = p.getMediaReferti(Colori.BIANCO, lista1);
+            mediaAttesaRefertiVerde = p.getMediaReferti(Colori.VERDE, lista1);
+            mediaAttesaRefertiGiallo = p.getMediaReferti(Colori.GIALLO, lista1);
+            mediaAttesaRefertiRosso = p.getMediaReferti(Colori.ROSSO, lista1);
             
             foreach (var i in lista)
             {
                 // implementare direttamente qui modalita dimissione se pasiente è dimesso
                 if (i.stato.Equals("Accettato"))
                 {
-                    string mediaAttesaVisita= "00h 00min";
+                    string mediaAttesaVisita= "0h 0min";
                     // imgPosizioneAccettato = R.drawable.rettangolo_g;
                     switch (i.colore)
                     {
@@ -64,7 +64,7 @@ namespace PsMonitorList.ServiceComparator
                             mediaAttesaVisita = mediaAttesaVisitaRosso;
                             break;
                     };
-                    if ( mediaAttesaVisita.Equals("00h 00min"))
+                    if ( mediaAttesaVisita.Equals("0h 0min"))
                     {
                         i.datapresaincarico = "";
 
@@ -93,7 +93,7 @@ namespace PsMonitorList.ServiceComparator
 
                 if (i.stato.Equals("In Visita"))
                 {
-                    string mediaAttesaReferti = "00h 00min";
+                    string mediaAttesaReferti = "0h 0min";
                     // imgPosizioneAccettato = R.drawable.rettangolo_g;
                     switch (i.colore)
                     {
@@ -111,7 +111,7 @@ namespace PsMonitorList.ServiceComparator
                             break;
                     };
 
-                    if (mediaAttesaReferti.Equals("00h 00min"))
+                    if (mediaAttesaReferti.Equals("0h 0min"))
                     {
                         i.dataprimarichiesta = "";
 
@@ -127,7 +127,7 @@ namespace PsMonitorList.ServiceComparator
 
                 if (i.stato.Equals("In Attesa Referto"))
                 {
-                    string mediaAttesaDimissione = "00h 00min";
+                    string mediaAttesaDimissione = "0h 0min";
 
                     switch (i.colore)
                     {
@@ -144,7 +144,7 @@ namespace PsMonitorList.ServiceComparator
                             mediaAttesaDimissione = mediaAttesaDimissioniRosso;
                             break;
                     };
-                    if (mediaAttesaDimissione.Equals("00h 00min"))
+                    if (mediaAttesaDimissione.Equals("0h 0min"))
                     {
                        i.datadimissione = "";
 

@@ -16,95 +16,95 @@ namespace PsMonitorList.Model
         {
             if (recordBean.nome == string.Empty)
             {
-                recordBean.nome = "---";
+                recordBean.nome = "";
             }
             if (recordBean.cognome == string.Empty)
             {
-                recordBean.cognome = "---";
+                recordBean.cognome = "";
             }
             if (recordBean.colore == string.Empty)
             {
-                recordBean.colore = "---";
+                recordBean.colore = "";
             }
             if (recordBean.dataaccettazione == string.Empty)
             {
-                recordBean.dataaccettazione = "---";
+                recordBean.dataaccettazione = "";
             }
             if (recordBean.datadimissione == string.Empty)
             {
-                recordBean.datadimissione = "---";
+                recordBean.datadimissione = "";
             }
             if (recordBean.datainvioinobi == string.Empty)
             {
-                recordBean.datainvioinobi = "---";
+                recordBean.datainvioinobi = "";
             }
             if (recordBean.datapresaincarico == string.Empty)
             {
-                recordBean.datapresaincarico = "---";
+                recordBean.datapresaincarico = "";
             }
             if (recordBean.dataprimarichiesta == string.Empty)
             {
-                recordBean.dataprimarichiesta = "---";
+                recordBean.dataprimarichiesta = "";
             }
             if (recordBean.eta == string.Empty)
             {
-                recordBean.eta = "---";
+                recordBean.eta = "";
             }
             if (recordBean.minutidimissione == string.Empty)
             {
-                recordBean.minutidimissione = "---";
+                recordBean.minutidimissione = "";
             }
             if (recordBean.minutiincaricorichiesta == string.Empty)
             {
-                recordBean.minutiincaricorichiesta = "---";
+                recordBean.minutiincaricorichiesta = "";
             }
             if (recordBean.minutipresaincarico == string.Empty)
             {
-                recordBean.minutipresaincarico = "---";
+                recordBean.minutipresaincarico = "";
             }
             if (recordBean.modalitadimissione == string.Empty)
             {
-                recordBean.modalitadimissione = "---";
+                recordBean.modalitadimissione = "";
             }
             if (recordBean.cartella == string.Empty)
             {
-                recordBean.cartella = "---";
+                recordBean.cartella = "";
             }
             if (recordBean.oraaccettazione == string.Empty)
             {
-                recordBean.oraaccettazione = "---";
+                recordBean.oraaccettazione = "";
             }
             if (recordBean.oradimissione == string.Empty)
             {
-                recordBean.oradimissione = "---";
+                recordBean.oradimissione = "";
             }
             if (recordBean.orainvioinobi == string.Empty)
             {
-                recordBean.orainvioinobi = "---";
+                recordBean.orainvioinobi = "";
             }
             if (recordBean.orapresaincarico == string.Empty)
             {
-                recordBean.orapresaincarico = "---";
+                recordBean.orapresaincarico = "";
             }
             if (recordBean.oraprimarichiesta == string.Empty)
             {
-                recordBean.oraprimarichiesta = "---";
+                recordBean.oraprimarichiesta = "";
             }
             if (recordBean.salaprimotriage == string.Empty)
             {
-                recordBean.salaprimotriage = "---";
+                recordBean.salaprimotriage = "";
             }
             if (recordBean.stato == string.Empty)
             {
-                recordBean.stato = "---";
+                recordBean.stato = "";
             }
             if (recordBean.salaprimotriage == string.Empty)
             {
-                recordBean.salaprimotriage = "---";
+                recordBean.salaprimotriage = "";
             }
             if (recordBean.sesso == string.Empty)
             {
-                recordBean.sesso = "---";
+                recordBean.sesso = "";
             }
             lista.Add(recordBean);
             return recordBean;
@@ -166,8 +166,7 @@ namespace PsMonitorList.Model
             String returnValue = "";
             List<RecordBean> listaFiltrati = new List<RecordBean>();
             DateTime c = DateTime.Now;
-            c.AddHours(-2);
-            DateTime dataLimite = c;
+            DateTime dataLimite = c.AddHours(-2);
             float numeroPazientiMedia = 0.0f;
             float tempoMedio = 0.0f;
             foreach (RecordBean recordBean in lista)
@@ -231,8 +230,7 @@ namespace PsMonitorList.Model
             String returnValue = "";
             List<RecordBean> listaFiltrati = new List<RecordBean>();
             DateTime c = DateTime.Now;
-            c.AddHours(-2);
-            DateTime dataLimite = c;
+            DateTime dataLimite = c.AddHours(-2);
             float numeroPazientiMedia = 0.0f;
             float tempoMedio = 0.0f;
 
@@ -240,8 +238,9 @@ namespace PsMonitorList.Model
             {
                 if (recordBean.colore.Equals(colore))
                 {
-                    if (!recordBean.datadimissione.Equals("") && !recordBean.dataprimarichiesta.Equals("") && !recordBean.datadimissione.Equals("---") && !recordBean.dataprimarichiesta.Equals("---"))
+                    if (!recordBean.datadimissione.Equals("") && !recordBean.dataprimarichiesta.Equals(""))
                     {
+                        if(!recordBean.datadimissione.Equals("---") && !recordBean.dataprimarichiesta.Equals("---"))
                         listaFiltrati.Add(recordBean);
                     }
                 }
@@ -296,8 +295,7 @@ namespace PsMonitorList.Model
             String returnValue = "";
             List<RecordBean> listaFiltrati = new List<RecordBean>();
             DateTime c = DateTime.Now;
-            c.AddHours(-2);
-            DateTime dataLimite = c;
+            DateTime dataLimite = c.AddHours(-2);
             float numeroPazientiMedia = 0.0f;
             float tempoMedio = 0.0f;
 
