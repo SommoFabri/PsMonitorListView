@@ -18,18 +18,13 @@ namespace PsMonitorList.Services
             HttpClient client = new HttpClient();
             var uri = new Uri(string.Format(url, string.Empty));
             var response = await client.GetStringAsync(uri);
-            try
-            {
+           
                 var isValid = JToken.Parse(response);
                 JObject jObject = JObject.Parse(response);
                 JArray jArray = (JArray)jObject["data"];
                 Items = JsonConvert.DeserializeObject<List<E>>(jArray.ToString()) as List<E>;
                 return Items;
-            }
-            catch (Exception a)
-            {
-                return new List<E>();
-            }
+           
         }
 
 

@@ -24,43 +24,59 @@ namespace PsMonitorList
         }
         public async void riempimento()
         {
-            CaricamentoPagina.IsVisible = false;
-            CaricamentoPagina.IsRunning = false;
+            
             int SlidePosition = 0;
         List<RecordBean> lista = await RisultatoConnessione();
-        List<RecordBean> prova = new List<RecordBean>();
-        ElencoPasientiBO p = new ElencoPasientiBO();
-        ElencoPasientiMedia media = new ElencoPasientiMedia();
-            
-        Colori colori = new Colori();
-            foreach (var i in lista)
+            if(lista!=null)
             {
-                var a = p.addBean(i);
-                prova.Add(a);
-            }
-            prova = p.getListaAssistitiDaVisualizzare(prova);
-            lista = media.ListaConMedia(prova,lista);
-            CreazioneGriglia crea = new CreazioneGriglia();
-            MainPageGrid = await crea.creazioneGriglia(lista);
-            Carousel.ItemsSource = MainPageGrid;
-            Carousel.ItemTemplate = GetDataTemplate();
-            Carousel.IsEnabled = false;
-        
+                CaricamentoPagina.IsVisible = false;
+                CaricamentoPagina.IsRunning = false;
+                List<RecordBean> prova = new List<RecordBean>();
+                ElencoPasientiBO p = new ElencoPasientiBO();
+                ElencoPasientiMedia media = new ElencoPasientiMedia();
 
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
-            {
-                SlidePosition++;
-                if (SlidePosition == MainPageGrid.Count)
+                Colori colori = new Colori();
+                foreach (var i in lista)
                 {
-                    SlidePosition = 0;
-                    Carousel.Position = SlidePosition;
-                    riempimento();
-                    return false;
+                    var a = p.addBean(i);
+                    prova.Add(a);
                 }
+                prova = p.getListaAssistitiDaVisualizzare(prova);
+                lista = media.ListaConMedia(prova, lista);
+                CreazioneGriglia crea = new CreazioneGriglia();
+                MainPageGrid = await crea.creazioneGriglia(lista);
+                Carousel.ItemsSource = MainPageGrid;
+                Carousel.ItemTemplate = GetDataTemplate();
+                Carousel.IsEnabled = false;
 
-                Carousel.Position = SlidePosition;
-                return true;
-            });
+
+                Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+                {
+                    SlidePosition++;
+                    if (SlidePosition == MainPageGrid.Count)
+                    {
+                        SlidePosition = 0;
+                        Carousel.Position = SlidePosition;
+                        riempimento();
+                        return false;
+                    }
+
+                    Carousel.Position = SlidePosition;
+                    return true;
+                });
+            }
+            else
+            {
+                Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+                {
+                        riempimento();
+                    CaricamentoPagina.IsRunning = true;
+                    CaricamentoPagina.IsVisible = true;
+                        return false;
+                  
+                });
+            }
+       
        
         }
         
@@ -76,8 +92,8 @@ namespace PsMonitorList
         }
         async  Task<List<RecordBean>> RisultatoConnessione()
         {
-           List<RecordBean> listaUno = new List<RecordBean>();
-
+            List<RecordBean> listaUno = new List<RecordBean>();
+            List<RecordBean> listaDue = new List<RecordBean>();
             try
             {
                 Connessioni<RecordBean> connessioni = new Connessioni<RecordBean>();
@@ -85,11 +101,14 @@ namespace PsMonitorList
                 string URL = urllone.creastringa();
                 listaUno = await connessioni.GetJson(URL);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                CaricamentoPagina.IsVisible = true;
-                CaricamentoPagina.IsRunning = true;
+
+                listaUno = null;
+                
             }
+
+           
             return listaUno;
 
         }
