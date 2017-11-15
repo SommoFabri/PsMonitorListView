@@ -48,7 +48,7 @@ namespace PsMonitorList
             Carousel.IsEnabled = false;
         
 
-            Device.StartTimer(TimeSpan.FromSeconds(20), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(15), () =>
             {
                 SlidePosition++;
                 if (SlidePosition == MainPageGrid.Count) SlidePosition = 0;
@@ -60,11 +60,11 @@ namespace PsMonitorList
             {
                 secondi = secondi + 1;
             }
-            secondi = secondi * 20;
-            Device.StartTimer(TimeSpan.FromSeconds(secondi), () =>
+            secondi = secondi * 15;
+            Device.StartTimer(TimeSpan.FromSeconds(secondi-1), () =>
             {
                 riempimento();
-                return true;
+                return false;
             });
         }
         
