@@ -21,9 +21,12 @@ namespace PsMonitorList
         {
             InitializeComponent();
             riempimento();
+
         }
         public async void riempimento()
         {
+            CaricamentoPagina.IsVisible = false;
+            CaricamentoPagina.IsRunning = false;
             int SlidePosition = 0;
         List<RecordBean> lista = await RisultatoConnessione();
         List<RecordBean> prova = new List<RecordBean>();
@@ -37,20 +40,27 @@ namespace PsMonitorList
                 prova.Add(a);
             }
             prova = p.getListaAssistitiDaVisualizzare(prova);
-            lista = media.ListaConMedia(prova);
+            lista = media.ListaConMedia(prova,lista);
             CreazioneGriglia crea = new CreazioneGriglia();
             MainPageGrid = await crea.creazioneGriglia(lista);
             Carousel.ItemsSource = MainPageGrid;
             Carousel.ItemTemplate = GetDataTemplate();
-            Device.StartTimer(TimeSpan.FromSeconds(10), () =>
+        
+
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
             {
                 SlidePosition++;
                 if (SlidePosition == MainPageGrid.Count) SlidePosition = 0;
                 Carousel.Position = SlidePosition;
                 return true;
             });
-
+            Device.StartTimer(TimeSpan.FromSeconds(30), () =>
+            {
+                riempimento();
+                return true;
+            });
         }
+        
         public DataTemplate GetDataTemplate()
         {
             int count = 0;
@@ -61,7 +71,7 @@ namespace PsMonitorList
                 return g;
             });
         }
-        async static Task<List<RecordBean>> RisultatoConnessione()
+        async  Task<List<RecordBean>> RisultatoConnessione()
         {
            List<RecordBean> listaUno = new List<RecordBean>();
 
@@ -74,8 +84,8 @@ namespace PsMonitorList
             }
             catch (Exception)
             {
-
-              await  App.Current.MainPage.DisplayAlert("Attenzione", "Errore di connessione ", "riprova");
+                CaricamentoPagina.IsVisible = true;
+                CaricamentoPagina.IsRunning = true;
             }
             return listaUno;
 
