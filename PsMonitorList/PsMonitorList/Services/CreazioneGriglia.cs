@@ -17,6 +17,8 @@ namespace PsMonitorList.Services
         {
             string codiceColore;
             Color colore = Color.Gray;
+            Color color = new Color();
+            color = Color.LightGray;
             int riga = 1;
 
             List<RecordBean> Appoggio = new List<RecordBean>();
@@ -145,17 +147,31 @@ namespace PsMonitorList.Services
                             BackgroundColor= Color.LightGray
 
                         };
+                        if (Appoggio[j].stato.Equals("Accettato") || Appoggio[j].stato.Equals("In Triage"))
+                        {
+                            color = Color.Orange;
+                        }
+                        else
+                            color = Color.LightGray;
+
                         var labelIngresso = new Label
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment= TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             FontAttributes = FontAttributes.Bold,
                             Text = Appoggio[j].dataaccettazione + "\n" + Appoggio[j].oraaccettazione,
                             TextColor = Color.Black,
-                            BackgroundColor= Color.LightGray
+                            BackgroundColor = color
                         };
+                        if (Appoggio[j].stato.Equals("In Visita"))
+                        {
+                            color = Color.Orange;
+                        }
+                        else
+                            color = Color.LightGray;
+
                         var labelInVisita = new Label
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -165,8 +181,15 @@ namespace PsMonitorList.Services
                             FontAttributes = FontAttributes.Bold,
                             Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
                             TextColor = Color.Black,
-                            BackgroundColor = Color.LightGray
+                            BackgroundColor = color
                         };
+                        if (Appoggio[j].stato.Equals("In Attesa Referto"))
+                        {
+                            color = Color.Orange;
+                        }
+                        else
+                            color = Color.LightGray;
+
                         var labelInAttesa = new Label
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -176,8 +199,16 @@ namespace PsMonitorList.Services
                             FontAttributes = FontAttributes.Bold,
                             Text = Appoggio[j].dataprimarichiesta + "\n" + Appoggio[j].oraprimarichiesta,
                             TextColor = Color.Black,
-                            BackgroundColor = Color.LightGray
+                            BackgroundColor = color
                         };
+
+                        if (Appoggio[j].stato.Equals("In Osservazione OBI"))
+                        {
+                            color = Color.Orange;
+                        }
+                        else
+                            color = Color.LightGray;
+
                         var labelDimissioni = new Label
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -187,7 +218,7 @@ namespace PsMonitorList.Services
                             FontAttributes = FontAttributes.Bold,
                             Text = Appoggio[j].datadimissione + "\n" + Appoggio[j].oradimissione,
                             TextColor = Color.Black,
-                            BackgroundColor = Color.LightGray
+                            BackgroundColor = color
                         };
                         var stackNominativi = new StackLayout
                         {
@@ -209,7 +240,7 @@ namespace PsMonitorList.Services
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             Padding = 5,
-                            BackgroundColor= Color.LightGray
+                          //  BackgroundColor= Color.LightGray
                         };
                         stackNominativi.Children.Add(labelCodiciNominativi);
                         stackNominativiOrizzontale.Children.Add(labelNomiCognomiEta);
@@ -338,6 +369,16 @@ namespace PsMonitorList.Services
                         BackgroundColor = Color.LightGray
 
                     };
+
+                    if (Appoggio[j].stato.Equals("Accettato"))
+                    {
+                        color = Color.Orange;
+                    }
+                    else if (Appoggio[j].stato.Equals("In Triage"))
+                        color = Color.Orange;
+                    else
+                        color = Color.LightGray;
+
                     var labelIngresso = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -347,9 +388,16 @@ namespace PsMonitorList.Services
                         FontAttributes = FontAttributes.Bold,
                         Text = Appoggio[j].dataaccettazione + "\n" + Appoggio[j].oraaccettazione,
                         TextColor = Color.Black,
-                        BackgroundColor = Color.LightGray
+                        BackgroundColor = color
                     };
-                    var labelInVisita = new Label
+                    if (Appoggio[j].stato.Equals("In Visita"))
+                    {
+                        color = Color.Orange;
+                    }
+                    else
+                        color = Color.LightGray;
+
+                        var labelInVisita = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         HorizontalTextAlignment = TextAlignment.Center,
@@ -358,8 +406,15 @@ namespace PsMonitorList.Services
                         FontAttributes = FontAttributes.Bold,
                         Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
                         TextColor = Color.Black,
-                        BackgroundColor = Color.LightGray
+                        BackgroundColor = color
                     };
+                    if (Appoggio[j].stato.Equals("In Attesa Referto"))
+                    {
+                        color = Color.Orange;
+                    }
+                    else
+                        color = Color.LightGray;
+
                     var labelInAttesa = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -369,8 +424,16 @@ namespace PsMonitorList.Services
                         FontAttributes = FontAttributes.Bold,
                         Text = Appoggio[j].dataprimarichiesta + "\n" + Appoggio[j].oraprimarichiesta,
                         TextColor = Color.Black,
-                        BackgroundColor = Color.LightGray
+                        BackgroundColor = color
                     };
+
+                    if (Appoggio[j].stato.Equals("In Osservazione OBI"))
+                    {
+                        color = Color.Orange;
+                    }
+                    else
+                        color = Color.LightGray;
+
                     var labelDimissioni = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -380,7 +443,7 @@ namespace PsMonitorList.Services
                         FontAttributes = FontAttributes.Bold,
                         Text = Appoggio[j].datadimissione + "\n" + Appoggio[j].oradimissione,
                         TextColor = Color.Black,
-                        BackgroundColor = Color.LightGray
+                        BackgroundColor = color
                     };
                     var stackNominativi = new StackLayout
                     {
@@ -402,7 +465,7 @@ namespace PsMonitorList.Services
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         Padding = 5,
-                        BackgroundColor = Color.LightGray
+                       // BackgroundColor = Color.LightGray
                     };
                     stackNominativi.Children.Add(labelCodiciNominativi);
                     stackNominativiOrizzontale.Children.Add(labelNomiCognomiEta);

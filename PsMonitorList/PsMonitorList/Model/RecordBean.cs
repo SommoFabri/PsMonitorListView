@@ -30,6 +30,7 @@ namespace PsMonitorList.Model
         public string minutidimissione { get; set; }
         public string salaprimotriage { get; set; }
         public string modalitadimissione { get; set; }
+        
     }
     
 }

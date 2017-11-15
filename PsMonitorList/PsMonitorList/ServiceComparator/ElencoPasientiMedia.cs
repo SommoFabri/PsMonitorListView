@@ -49,7 +49,6 @@ namespace PsMonitorList.ServiceComparator
                 if (i.stato.Equals("Accettato"))
                 {
                     string mediaAttesaVisita= "0h 0min";
-                    // imgPosizioneAccettato = R.drawable.rettangolo_g;
                     switch (i.colore)
                     {
                         case "Bianco": mediaAttesaVisita = mediaAttesaVisitaBianco;
@@ -83,7 +82,7 @@ namespace PsMonitorList.ServiceComparator
                 if (i.stato.Equals("Dimesso"))
                 {
                     //imgPosizioneDimesso = R.drawable.rettangolo_g;
-                   string stato = i.modalitadimissione;
+                    string stato = i.modalitadimissione;
                     stato = "RICOVERO IN REPARTO DI DEGENZA".Equals(stato) ? "Ricoverato" : stato;
                     stato = "DIMISSIONE A DOMICILIO".Equals(stato) ? "Dimesso" : stato;
                     stato = "TRASFERIMENTO AD ALTRO ISTITUTO".Equals(stato) ? "Trasferimento ad Altro Istituto" : stato;

@@ -37,7 +37,7 @@ namespace PsMonitorList
                 prova.Add(a);
             }
             prova = p.getListaAssistitiDaVisualizzare(prova);
-            lista = media.ListaConMedia(prova);
+            lista = media.ListaConMedia(prova,lista);
             CreazioneGriglia crea = new CreazioneGriglia();
             MainPageGrid = await crea.creazioneGriglia(lista);
             Carousel.ItemsSource = MainPageGrid;
