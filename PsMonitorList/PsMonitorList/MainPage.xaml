@@ -27,5 +27,6 @@
         <control:CarouselView x:Name="Carousel" HorizontalOptions="FillAndExpand">
 
         </control:CarouselView>
+        <ActivityIndicator x:Name="CaricamentoPagina" ></ActivityIndicator>
     </StackLayout>
 </ContentPage>
