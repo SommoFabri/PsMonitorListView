@@ -47,14 +47,20 @@ namespace PsMonitorList
             Carousel.ItemTemplate = GetDataTemplate();
         
 
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(20), () =>
             {
                 SlidePosition++;
                 if (SlidePosition == MainPageGrid.Count) SlidePosition = 0;
                 Carousel.Position = SlidePosition;
                 return true;
             });
-            Device.StartTimer(TimeSpan.FromSeconds(30), () =>
+            int secondi = lista.Count / 5;
+            if (lista.Count % 5 != 0)
+            {
+                secondi = secondi + 1;
+            }
+            secondi = secondi * 20;
+            Device.StartTimer(TimeSpan.FromSeconds(secondi), () =>
             {
                 riempimento();
                 return true;
