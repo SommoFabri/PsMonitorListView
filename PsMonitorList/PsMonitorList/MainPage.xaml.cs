@@ -16,7 +16,6 @@ namespace PsMonitorList
     {
         public List<Grid> MainPageGrid = new List<Grid>();
 
-        List<RecordBean> lista = new List<RecordBean>();
         public MainPage()
         {
             InitializeComponent();
@@ -48,24 +47,21 @@ namespace PsMonitorList
             Carousel.IsEnabled = false;
         
 
-            Device.StartTimer(TimeSpan.FromSeconds(15), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
             {
                 SlidePosition++;
-                if (SlidePosition == MainPageGrid.Count) SlidePosition = 0;
+                if (SlidePosition == MainPageGrid.Count)
+                {
+                    SlidePosition = 0;
+                    Carousel.Position = SlidePosition;
+                    riempimento();
+                    return false;
+                }
+
                 Carousel.Position = SlidePosition;
                 return true;
             });
-            int secondi = lista.Count / 5;
-            if (lista.Count % 5 != 0)
-            {
-                secondi = secondi + 1;
-            }
-            secondi = secondi * 15;
-            Device.StartTimer(TimeSpan.FromSeconds(secondi-1), () =>
-            {
-                riempimento();
-                return false;
-            });
+       
         }
         
         public DataTemplate GetDataTemplate()
