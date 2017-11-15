@@ -45,6 +45,7 @@ namespace PsMonitorList
             MainPageGrid = await crea.creazioneGriglia(lista);
             Carousel.ItemsSource = MainPageGrid;
             Carousel.ItemTemplate = GetDataTemplate();
+            Carousel.IsEnabled = false;
         
 
             Device.StartTimer(TimeSpan.FromSeconds(20), () =>
