@@ -205,7 +205,7 @@ namespace PsMonitorList.Services
                             BackgroundColor = color
                         };
 
-                        if (Appoggio[j].stato.Equals("In Osservazione OBI"))
+                        if (Appoggio[j].stato.Equals("In Osservazione OBI") || Appoggio[j].stato.Equals("Dimesso"))
                         {
                             color = Color.Orange;
                         }
@@ -430,7 +430,7 @@ namespace PsMonitorList.Services
                         BackgroundColor = color
                     };
 
-                    if (Appoggio[j].stato.Equals("In Osservazione OBI"))
+                    if (Appoggio[j].stato.Equals("In Osservazione OBI") || Appoggio[j].stato.Equals("Dimesso"))
                     {
                         color = Color.Orange;
                     }
