@@ -24,30 +24,15 @@ namespace PsMonitorList.Services
             List<RecordBean> Appoggio = new List<RecordBean>();
             foreach (var i in lista)
             {
-                
-                codiceColore = i.colore;
                 Appoggio.Add(i);
 
-                switch (codiceColore)
-                {
-                    case "Verde":
-                        colore = Color.LimeGreen;
-                        break;
-                    case "Rosso":
-                        colore = Color.Red;
-                        break;
-                    case "Bianco":
-                        colore = Color.White;
-                        break;
-                    case "Giallo":
-                        colore = Color.Yellow;
-                        break;
-                }
                 if (Appoggio.Count == 5)
                 {
                     Grid grigliaPrincipale = new Grid();
                     grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                     grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+
+                    
 
                     var lblNominativi = new Label
                     {
@@ -114,6 +99,24 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.Children.Add(lblNominativi5, 5, 0);
                     for (int j = 0; j < Appoggio.Count; j++)
                     {
+                        codiceColore = Appoggio[j].colore;
+
+                        switch (codiceColore)
+                        {
+                            case "Verde":
+                                colore = Color.LimeGreen;
+                                break;
+                            case "Rosso":
+                                colore = Color.Red;
+                                break;
+                            case "Bianco":
+                                colore = Color.White;
+                                break;
+                            case "Giallo":
+                                colore = Color.Yellow;
+                                break;
+                        }
+
                         var labelCodiciNominativi = new Label
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
