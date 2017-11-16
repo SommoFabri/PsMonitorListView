@@ -416,11 +416,19 @@ namespace PsMonitorList.Services
                 }
                 if (Appoggio.Count < 5 && Appoggio.Count != 0)
                 {
-                    Grid grigliaPrincipale = new Grid();
-                    grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
-                    grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
 
-                    var lblNominativi = new Label
+                    ElencoPasientiBO p = new ElencoPasientiBO();
+                    RecordBean g = new RecordBean();
+                    g = p.aggiungiCampiVuoti();
+                    while ( Appoggio.Count != 5)
+                    {
+                    Appoggio.Add(g);
+                    }
+                Grid grigliaPrincipale = new Grid();
+                grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+                grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+
+                var lblNominativi = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         HorizontalTextAlignment = TextAlignment.Center,

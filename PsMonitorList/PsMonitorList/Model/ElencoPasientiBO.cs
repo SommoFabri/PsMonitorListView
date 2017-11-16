@@ -351,5 +351,34 @@ namespace PsMonitorList.Model
 
             return returnValue;
         }
+
+        public RecordBean aggiungiCampiVuoti()
+        {
+            RecordBean recordBean = new RecordBean();
+                recordBean.nome = "---";
+            recordBean.cognome = "---";
+            recordBean.colore = "---";
+            recordBean.dataaccettazione = "---";
+            recordBean.datadimissione = "---";
+            recordBean.datainvioinobi = "---";
+            recordBean.datapresaincarico = "---";
+            recordBean.dataprimarichiesta = "---";
+            recordBean.eta = "---";
+            recordBean.minutidimissione = "---";
+            recordBean.minutiincaricorichiesta = "---";
+            recordBean.minutipresaincarico = "---";
+            recordBean.modalitadimissione = "---";
+            recordBean.cartella = "---";
+            recordBean.oraaccettazione = "---";
+            recordBean.oradimissione = "---";
+            recordBean.orainvioinobi = "---";
+            recordBean.orapresaincarico = "---";
+            recordBean.oraprimarichiesta = "---";
+            recordBean.salaprimotriage = "---";
+            recordBean.stato = "---";
+            recordBean.salaprimotriage = "---";
+            recordBean.sesso = "---";
+            return recordBean;
+        }
     }
 }
