@@ -425,9 +425,9 @@ namespace PsMonitorList.Services
                     Appoggio.Add(g);
                     }
                 Grid grigliaPrincipale = new Grid();
+
                 grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-
                 var lblNominativi = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -494,8 +494,24 @@ namespace PsMonitorList.Services
 
                 for (int j = 0; j < Appoggio.Count; j++)
                 {
-                    grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
 
+                    codiceColore = Appoggio[j].colore;
+
+                    switch (codiceColore)
+                    {
+                        case "Verde":
+                            colore = Color.LimeGreen;
+                            break;
+                        case "Rosso":
+                            colore = Color.Red;
+                            break;
+                        case "Bianco":
+                            colore = Color.White;
+                            break;
+                        case "Giallo":
+                            colore = Color.Yellow;
+                            break;
+                    }
                     var imageArrowIngresso = new Image
                     {
                         Source = "freccia.png",
@@ -535,7 +551,7 @@ namespace PsMonitorList.Services
                         Text = Appoggio[j].cartella,
                         BackgroundColor = colore,
                         TextColor = Color.Black,
-                        WidthRequest = 60,
+                        WidthRequest = 80,
                         HeightRequest = 40
                     };
                     var labelNomiCognomiEta = new Label
@@ -558,13 +574,10 @@ namespace PsMonitorList.Services
                         BackgroundColor = Color.LightGray
 
                     };
-
-                    if (Appoggio[j].stato.Equals("Accettato"))
+                    if (Appoggio[j].stato.Equals("Accettato") || Appoggio[j].stato.Equals("In Triage"))
                     {
                         color = Color.Orange;
                     }
-                    else if (Appoggio[j].stato.Equals("In Triage"))
-                        color = Color.Orange;
                     else
                         color = Color.LightGray;
 
@@ -586,7 +599,7 @@ namespace PsMonitorList.Services
                     else
                         color = Color.LightGray;
 
-                        var labelInVisita = new Label
+                    var labelInVisita = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         HorizontalTextAlignment = TextAlignment.Center,
@@ -668,6 +681,7 @@ namespace PsMonitorList.Services
                     {
                         stackNominativiGrande.Children.Add(imageSessoDonna);
                     }
+
                     var stackIngresso = new StackLayout
                     {
                         Orientation = StackOrientation.Horizontal,
@@ -785,6 +799,7 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.Children.Add(imageArrowIngresso, 2, riga);
                     grigliaPrincipale.Children.Add(imageArrowVisita, 3, riga);
                     grigliaPrincipale.Children.Add(imageArrowAttesa, 4, riga);
+
                     grigliaPrincipale.ColumnSpacing = 2;
                     grigliaPrincipale.RowSpacing = 2;
                     riga++;
