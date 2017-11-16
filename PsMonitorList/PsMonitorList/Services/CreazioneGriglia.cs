@@ -116,7 +116,13 @@ namespace PsMonitorList.Services
                                 colore = Color.Yellow;
                                 break;
                         }
-
+                        var imageArrow = new Image
+                        {
+                            Source = "freccia.png",
+                            HorizontalOptions= LayoutOptions.End,
+                            HeightRequest= 30,
+                            WidthRequest= 20
+                        };
                         var labelCodiciNominativi = new Label
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -127,7 +133,7 @@ namespace PsMonitorList.Services
                             Text = Appoggio[j].cartella,
                             BackgroundColor = colore,
                             TextColor = Color.Black,
-                            WidthRequest=60,
+                            WidthRequest=80,
                             HeightRequest= 40
                         };
                         var labelNomiCognomiEta = new Label
@@ -255,6 +261,9 @@ namespace PsMonitorList.Services
                         grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
                         grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
                         grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
+                        grigliaPrincipale.Children.Add(imageArrow, 2, riga);
+                        grigliaPrincipale.Children.Add(imageArrow, 3, riga);
+                        grigliaPrincipale.Children.Add(imageArrow, 4, riga);
                         grigliaPrincipale.ColumnSpacing = 2;
                         grigliaPrincipale.RowSpacing = 2;
                         riga++;
@@ -339,6 +348,13 @@ namespace PsMonitorList.Services
                 {
                     grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
 
+                    var imageArrow = new Image
+                    {
+                        Source = "freccia.png",
+                        HorizontalOptions = LayoutOptions.End,
+                        HeightRequest = 30,
+                        WidthRequest = 20
+                    };
                     var labelCodiciNominativi = new Label
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -480,6 +496,9 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
                     grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
                     grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
+                    grigliaPrincipale.Children.Add(imageArrow, 2, riga);
+                    grigliaPrincipale.Children.Add(imageArrow, 3, riga);
+                    grigliaPrincipale.Children.Add(imageArrow, 4, riga);
                     grigliaPrincipale.ColumnSpacing = 2;
                     grigliaPrincipale.RowSpacing = 2;
                     riga++;
