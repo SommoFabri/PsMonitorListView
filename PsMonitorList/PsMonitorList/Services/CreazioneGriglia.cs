@@ -116,12 +116,26 @@ namespace PsMonitorList.Services
                                 colore = Color.Yellow;
                                 break;
                         }
-                        var imageArrow = new Image
+                        var imageArrowIngresso = new Image
                         {
                             Source = "freccia.png",
                             HorizontalOptions= LayoutOptions.End,
                             HeightRequest= 30,
                             WidthRequest= 20
+                        };
+                        var imageArrowVisita = new Image
+                        {
+                            Source = "freccia.png",
+                            HorizontalOptions = LayoutOptions.End,
+                            HeightRequest = 30,
+                            WidthRequest = 20
+                        };
+                        var imageArrowAttesa = new Image
+                        {
+                            Source = "freccia.png",
+                            HorizontalOptions = LayoutOptions.End,
+                            HeightRequest = 30,
+                            WidthRequest = 20
                         };
                         var labelCodiciNominativi = new Label
                         {
@@ -261,9 +275,9 @@ namespace PsMonitorList.Services
                         grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
                         grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
                         grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
-                        grigliaPrincipale.Children.Add(imageArrow, 2, riga);
-                        grigliaPrincipale.Children.Add(imageArrow, 3, riga);
-                        grigliaPrincipale.Children.Add(imageArrow, 4, riga);
+                        grigliaPrincipale.Children.Add(imageArrowIngresso, 2, riga);
+                        grigliaPrincipale.Children.Add(imageArrowVisita, 3, riga);
+                        grigliaPrincipale.Children.Add(imageArrowAttesa, 4, riga);
                         grigliaPrincipale.ColumnSpacing = 2;
                         grigliaPrincipale.RowSpacing = 2;
                         riga++;
@@ -348,7 +362,21 @@ namespace PsMonitorList.Services
                 {
                     grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
 
-                    var imageArrow = new Image
+                    var imageArrowIngresso = new Image
+                    {
+                        Source = "freccia.png",
+                        HorizontalOptions = LayoutOptions.End,
+                        HeightRequest = 30,
+                        WidthRequest = 20
+                    };
+                    var imageArrowVisita = new Image
+                    {
+                        Source = "freccia.png",
+                        HorizontalOptions = LayoutOptions.End,
+                        HeightRequest = 30,
+                        WidthRequest = 20
+                    };
+                    var imageArrowAttesa = new Image
                     {
                         Source = "freccia.png",
                         HorizontalOptions = LayoutOptions.End,
@@ -496,9 +524,9 @@ namespace PsMonitorList.Services
                     grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
                     grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
                     grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
-                    grigliaPrincipale.Children.Add(imageArrow, 2, riga);
-                    grigliaPrincipale.Children.Add(imageArrow, 3, riga);
-                    grigliaPrincipale.Children.Add(imageArrow, 4, riga);
+                    grigliaPrincipale.Children.Add(imageArrowIngresso, 2, riga);
+                    grigliaPrincipale.Children.Add(imageArrowVisita, 3, riga);
+                    grigliaPrincipale.Children.Add(imageArrowAttesa, 4, riga);
                     grigliaPrincipale.ColumnSpacing = 2;
                     grigliaPrincipale.RowSpacing = 2;
                     riga++;
