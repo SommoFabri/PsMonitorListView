@@ -137,6 +137,14 @@ namespace PsMonitorList.Services
                             HeightRequest = 30,
                             WidthRequest = 20
                         };
+                        var imageSessoUomo = new Image
+                        {
+                            Source= "male48.png"
+                        };
+                        var imageSessoDonna = new Image
+                        {
+                            Source ="female48.png"
+                        }; 
                         var labelCodiciNominativi = new Label
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -155,7 +163,7 @@ namespace PsMonitorList.Services
                             HorizontalOptions = LayoutOptions.Center,
                             VerticalOptions = LayoutOptions.Center,
                             FontAttributes = FontAttributes.Bold,
-                            Text = Appoggio[j].cognome.Substring(0, 1) + "." + " " + Appoggio[j].nome.Substring(0, 1) + "." + " età: " + Appoggio[j].eta + "\n" + "sesso: " + Appoggio[j].sesso,
+                            Text = Appoggio[j].cognome.Substring(0, 1) + "." + " " + Appoggio[j].nome.Substring(0, 1) + "." + " età: " + Appoggio[j].eta ,
                             TextColor = Color.Black
                         };
                         var labelStato = new Label
@@ -269,6 +277,14 @@ namespace PsMonitorList.Services
                         stackNominativiOrizzontale.Children.Add(labelNomiCognomiEta);
                         stackNominativi.Children.Add(stackNominativiOrizzontale);
                         stackNominativiGrande.Children.Add(stackNominativi);
+                        if (Appoggio[j].sesso == "M")
+                        {
+                            stackNominativiGrande.Children.Add(imageSessoUomo);
+                        }
+                        else if(Appoggio[j].sesso=="F")
+                        {
+                            stackNominativiGrande.Children.Add(imageSessoDonna);
+                        }
                         grigliaPrincipale.Children.Add(stackNominativiGrande, 0, riga);
                         grigliaPrincipale.Children.Add(labelStato, 1, riga);
                         grigliaPrincipale.Children.Add(labelIngresso, 2, riga);
@@ -278,6 +294,7 @@ namespace PsMonitorList.Services
                         grigliaPrincipale.Children.Add(imageArrowIngresso, 2, riga);
                         grigliaPrincipale.Children.Add(imageArrowVisita, 3, riga);
                         grigliaPrincipale.Children.Add(imageArrowAttesa, 4, riga);
+                      
                         grigliaPrincipale.ColumnSpacing = 2;
                         grigliaPrincipale.RowSpacing = 2;
                         riga++;
@@ -382,6 +399,14 @@ namespace PsMonitorList.Services
                         HorizontalOptions = LayoutOptions.End,
                         HeightRequest = 30,
                         WidthRequest = 20
+                    };
+                    var imageSessoUomo = new Image
+                    {
+                        Source = "male48.png"
+                    };
+                    var imageSessoDonna = new Image
+                    {
+                        Source = "female48.png"
                     };
                     var labelCodiciNominativi = new Label
                     {
@@ -518,6 +543,14 @@ namespace PsMonitorList.Services
                     stackNominativiOrizzontale.Children.Add(labelNomiCognomiEta);
                     stackNominativi.Children.Add(stackNominativiOrizzontale);
                     stackNominativiGrande.Children.Add(stackNominativi);
+                    if (Appoggio[j].sesso == "M")
+                    {
+                        stackNominativiGrande.Children.Add(imageSessoUomo);
+                    }
+                    else if (Appoggio[j].sesso == "F")
+                    {
+                        stackNominativiGrande.Children.Add(imageSessoDonna);
+                    }
                     grigliaPrincipale.Children.Add(stackNominativiGrande, 0, riga);
                     grigliaPrincipale.Children.Add(labelStato, 1, riga);
                     grigliaPrincipale.Children.Add(labelIngresso, 2, riga);
