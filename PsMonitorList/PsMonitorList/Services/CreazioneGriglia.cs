@@ -426,7 +426,7 @@ namespace PsMonitorList.Services
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
                         FontAttributes = FontAttributes.Bold,
-                        Text = Appoggio[j].cognome.Substring(0, 1) + "." + " " + Appoggio[j].nome.Substring(0, 1) + "." + " età: " + Appoggio[j].eta + "\n" + "sesso: " + Appoggio[j].sesso,
+                        Text = Appoggio[j].cognome.Substring(0, 1) + "." + " " + Appoggio[j].nome.Substring(0, 1) + "." + " età: " + Appoggio[j].eta,
                         TextColor = Color.Black
                     };
                     var labelStato = new Label
