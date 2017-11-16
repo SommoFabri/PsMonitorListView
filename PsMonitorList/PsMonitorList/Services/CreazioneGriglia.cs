@@ -267,7 +267,7 @@ namespace PsMonitorList.Services
                         grigliaPrincipale.ColumnSpacing = 2;
                         grigliaPrincipale.RowSpacing = 2;
                         riga++;
-                    }
+                        }
                     Appoggio.Clear();
 
                     riga = 1;
