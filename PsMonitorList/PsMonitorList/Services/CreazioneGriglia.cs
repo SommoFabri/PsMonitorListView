@@ -660,12 +660,120 @@ namespace PsMonitorList.Services
                     {
                         stackNominativiGrande.Children.Add(imageSessoDonna);
                     }
+                    var stackIngresso = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.Fill,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        Margin = 5
+                    };
+                    var stackIngressoOrizzontale = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                    };
+                    var stackIngressoGrande = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                        BackgroundColor = Color.LightGray
+                    };
+                    stackIngresso.Children.Add(labelIngresso);
+                    stackIngressoOrizzontale.Children.Add(imageArrowIngresso);
+                    stackIngresso.Children.Add(stackIngressoOrizzontale);
+                    stackIngressoGrande.Children.Add(stackIngresso);
+
+                    var stackInVisita = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.Fill,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        Margin = 5
+                    };
+                    var stackInVisitaOrizzontale = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                    };
+                    var stackInVisitaGrande = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                        BackgroundColor = Color.LightGray
+                    };
+                    stackInVisita.Children.Add(labelInVisita);
+                    stackInVisitaOrizzontale.Children.Add(imageArrowVisita);
+                    stackInVisita.Children.Add(stackInVisitaOrizzontale);
+                    stackInVisitaGrande.Children.Add(stackInVisita);
+
+                    var stackInAttesa = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.Fill,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        Margin = 5
+                    };
+                    var stackInAttesaOrizzontale = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                    };
+                    var stackInAttesaGrande = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                        BackgroundColor = Color.LightGray
+                    };
+                    stackInAttesa.Children.Add(labelInAttesa);
+                    stackInAttesaOrizzontale.Children.Add(imageArrowAttesa);
+                    stackInAttesa.Children.Add(stackInAttesaOrizzontale);
+                    stackInAttesaGrande.Children.Add(stackInAttesa);
+
+                    var stackDimissioni = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        Margin = 5
+                    };
+                    var stackDimissioniOrizzontale = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                    };
+                    var stackDimissioniGrande = new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 5,
+                        BackgroundColor = Color.LightGray
+                    };
+                    stackDimissioni.Children.Add(labelDimissioni);
+                    //stackDimissioniOrizzontale.Children.Add( );
+                    // stackDimissioni.Children.Add(stackDimissioniOrizzontale);
+                    stackDimissioniGrande.Children.Add(stackDimissioni);
+
                     grigliaPrincipale.Children.Add(stackNominativiGrande, 0, riga);
                     grigliaPrincipale.Children.Add(labelStato, 1, riga);
-                    grigliaPrincipale.Children.Add(labelIngresso, 2, riga);
-                    grigliaPrincipale.Children.Add(labelInVisita, 3, riga);
-                    grigliaPrincipale.Children.Add(labelInAttesa, 4, riga);
-                    grigliaPrincipale.Children.Add(labelDimissioni, 5, riga);
+                    grigliaPrincipale.Children.Add(stackIngressoGrande, 2, riga);
+                    grigliaPrincipale.Children.Add(stackInVisitaGrande, 3, riga);
+                    grigliaPrincipale.Children.Add(stackInAttesaGrande, 4, riga);
+                    grigliaPrincipale.Children.Add(stackDimissioniGrande, 5, riga);
                     grigliaPrincipale.Children.Add(imageArrowIngresso, 2, riga);
                     grigliaPrincipale.Children.Add(imageArrowVisita, 3, riga);
                     grigliaPrincipale.Children.Add(imageArrowAttesa, 4, riga);
