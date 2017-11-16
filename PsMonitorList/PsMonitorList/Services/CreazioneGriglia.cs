@@ -243,7 +243,7 @@ namespace PsMonitorList.Services
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             Padding = 5,
-                          //  BackgroundColor= Color.LightGray
+                           BackgroundColor= Color.LightGray
                         };
                         stackNominativi.Children.Add(labelCodiciNominativi);
                         stackNominativiOrizzontale.Children.Add(labelNomiCognomiEta);
@@ -468,7 +468,7 @@ namespace PsMonitorList.Services
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         Padding = 5,
-                       // BackgroundColor = Color.LightGray
+                        BackgroundColor = Color.LightGray
                     };
                     stackNominativi.Children.Add(labelCodiciNominativi);
                     stackNominativiOrizzontale.Children.Add(labelNomiCognomiEta);
