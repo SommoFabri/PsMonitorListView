@@ -14,7 +14,14 @@ namespace PsMonitorList
 {
     public partial class MainPage : ContentPage
     {
-        public List<Grid> MainPageGrid = new List<Grid>();
+        Colori colori = new Colori();
+        ElencoPasientiMedia media = new ElencoPasientiMedia();
+        ElencoPasientiBO MetodoElencoBO = new ElencoPasientiBO();
+        CreazioneGriglia crea = new CreazioneGriglia();
+
+        public  List<Grid> MainPageGrid = new List<Grid>();
+        public List<RecordBean> lista = new List<RecordBean>();
+        public int Flag = 0;
 
         public MainPage()
         {
@@ -22,28 +29,48 @@ namespace PsMonitorList
             riempimento();
 
         }
+
         public async void riempimento()
         {
+            lista = null;
+            lista= await RisultatoConnessione();
             
-            int SlidePosition = 0;
-        List<RecordBean> lista = await RisultatoConnessione();
-            if(lista!=null)
+            if (lista != null)
             {
-                CaricamentoPagina.IsVisible = false;
-                CaricamentoPagina.IsRunning = false;
-                List<RecordBean> prova = new List<RecordBean>();
-                ElencoPasientiBO p = new ElencoPasientiBO();
-                ElencoPasientiMedia media = new ElencoPasientiMedia();
-
-                Colori colori = new Colori();
+                List<RecordBean> listaTemp = new List<RecordBean>();
                 foreach (var i in lista)
                 {
-                    var a = p.addBean(i);
-                    prova.Add(a);
+                    var appoggio = MetodoElencoBO.addBean(i);
+                    listaTemp.Add(appoggio);
                 }
-                prova = p.getListaAssistitiDaVisualizzare(prova);
-                lista = media.ListaConMedia(prova, lista);
-                CreazioneGriglia crea = new CreazioneGriglia();
+                listaTemp = MetodoElencoBO.getListaAssistitiDaVisualizzare(listaTemp);
+                lista = media.ListaConMedia(listaTemp, lista);
+                if(Flag == 0)
+                visualizza();
+            }
+            else
+            {
+                    CaricamentoPagina.IsRunning = true;
+                    CaricamentoPagina.IsVisible = true;
+                    riempimento();  
+            }
+        }
+
+
+
+        public async void visualizza()
+        {
+            Flag = 1;
+            int SlidePosition;
+
+            if (lista!=null)
+            {
+                SlidePosition = 0;
+                CaricamentoPagina.IsVisible = false;
+                CaricamentoPagina.IsRunning = false;
+
+                MainPageGrid = null;
+
                 MainPageGrid = await crea.creazioneGriglia(lista);
                 Carousel.ItemsSource = MainPageGrid;
                 Carousel.ItemTemplate = GetDataTemplate();
@@ -53,11 +80,15 @@ namespace PsMonitorList
                 Device.StartTimer(TimeSpan.FromSeconds(15), () =>
                 {
                     SlidePosition++;
+                    if (SlidePosition == MainPageGrid.Count-1)
+                    {
+                        riempimento();
+                    }
                     if (SlidePosition == MainPageGrid.Count)
                     {
                         SlidePosition = 0;
                         Carousel.Position = SlidePosition;
-                        riempimento();
+                        visualizza();
                         return false;
                     }
 
@@ -67,15 +98,14 @@ namespace PsMonitorList
             }
             else
             {
-                Device.StartTimer(TimeSpan.FromSeconds(15), () =>
-                {
-                        riempimento();
-                    CaricamentoPagina.IsRunning = true;
-                    CaricamentoPagina.IsVisible = true;
-                        return false;
-                  
-                });
+                Flag = 0;
+                if (Carousel.Position != MainPageGrid.Count)
+                    Carousel.Position++;
+                else Carousel.Position = 0;
+
+                riempimento();
             }
+            
        
        
         }

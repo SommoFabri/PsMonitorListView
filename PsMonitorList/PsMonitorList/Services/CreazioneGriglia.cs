@@ -511,6 +511,9 @@ namespace PsMonitorList.Services
                         case "Giallo":
                             colore = Color.Yellow;
                             break;
+                        case "---":
+                            colore = Color.Gray;
+                            break;
                     }
                     var imageArrowIngresso = new Image
                     {
