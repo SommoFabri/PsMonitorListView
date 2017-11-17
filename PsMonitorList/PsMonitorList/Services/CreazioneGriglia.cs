@@ -41,6 +41,7 @@ namespace PsMonitorList.Services
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         FontAttributes = FontAttributes.Bold,
                         BackgroundColor = Color.Chocolate,
+                        TextColor= Color.White,
                         Text = "Nominativi"
 
                     };
@@ -50,6 +51,7 @@ namespace PsMonitorList.Services
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         FontAttributes = FontAttributes.Bold,
+                        TextColor = Color.White,
                         BackgroundColor = Color.Chocolate,
                         Text = "Stato"
                     };
@@ -58,6 +60,7 @@ namespace PsMonitorList.Services
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
+                        TextColor = Color.White,
                         FontAttributes = FontAttributes.Bold,
                         BackgroundColor = Color.Chocolate,
                         Text = "Ingresso"
@@ -67,6 +70,7 @@ namespace PsMonitorList.Services
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
+                        TextColor = Color.White,
                         FontAttributes = FontAttributes.Bold,
                         BackgroundColor = Color.Chocolate,
                         Text = "In visita"
@@ -76,7 +80,7 @@ namespace PsMonitorList.Services
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalTextAlignment = TextAlignment.Center,
-
+                        TextColor = Color.White,
                         FontAttributes = FontAttributes.Bold,
                         BackgroundColor = Color.Chocolate,
                         Text = "Attesa referti"
@@ -86,6 +90,7 @@ namespace PsMonitorList.Services
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
+                        TextColor = Color.White,
                         FontAttributes = FontAttributes.Bold,
                         BackgroundColor = Color.Chocolate,
                         Text = "Attesa Dim."
@@ -172,6 +177,7 @@ namespace PsMonitorList.Services
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
+                            FontSize= 15,
                             FontAttributes = FontAttributes.Bold,
                             Text = Appoggio[j].salaprimotriage + "\n" + Appoggio[j].stato,
                             TextColor= Color.Black,
@@ -192,6 +198,7 @@ namespace PsMonitorList.Services
                             VerticalTextAlignment = TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             FontAttributes = FontAttributes.Bold,
+                            FontSize = 15,
                             Text = Appoggio[j].dataaccettazione + "\n" + Appoggio[j].oraaccettazione,
                             TextColor = Color.Black,
                             BackgroundColor = color
@@ -210,6 +217,7 @@ namespace PsMonitorList.Services
                             VerticalTextAlignment = TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             FontAttributes = FontAttributes.Bold,
+                            FontSize = 15,
                             Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
                             TextColor = Color.Black,
                             BackgroundColor = color
@@ -228,6 +236,7 @@ namespace PsMonitorList.Services
                             VerticalTextAlignment = TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             FontAttributes = FontAttributes.Bold,
+                            FontSize = 15,
                             Text = Appoggio[j].dataprimarichiesta + "\n" + Appoggio[j].oraprimarichiesta,
                             TextColor = Color.Black,
                             BackgroundColor = color
@@ -247,6 +256,7 @@ namespace PsMonitorList.Services
                             VerticalTextAlignment = TextAlignment.Center,
                             VerticalOptions = LayoutOptions.FillAndExpand,
                             FontAttributes = FontAttributes.Bold,
+                            FontSize = 15,
                             Text = Appoggio[j].datadimissione + "\n" + Appoggio[j].oradimissione,
                             TextColor = Color.Black,
                             BackgroundColor = color
@@ -428,64 +438,70 @@ namespace PsMonitorList.Services
 
                 grigliaPrincipale.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 grigliaPrincipale.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+
                 var lblNominativi = new Label
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        FontAttributes = FontAttributes.Bold,
-                        BackgroundColor = Color.Chocolate,
-                        Text = "Nominativi"
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    FontAttributes = FontAttributes.Bold,
+                    BackgroundColor = Color.Chocolate,
+                    TextColor = Color.White,
+                    Text = "Nominativi"
 
-                    };
-                    var lblNominativi1 = new Label
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        FontAttributes = FontAttributes.Bold,
-                        BackgroundColor = Color.Chocolate,
-                        Text = "Stato"
-                    };
-                    var lblNominativi2 = new Label
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        FontAttributes = FontAttributes.Bold,
-                        BackgroundColor = Color.Chocolate,
-                        Text = "Ingresso"
-                    };
-                    var lblNominativi3 = new Label
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        FontAttributes = FontAttributes.Bold,
-                        BackgroundColor = Color.Chocolate,
-                        Text = "In visita"
-                    };
-                    var lblNominativi4 = new Label
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalTextAlignment = TextAlignment.Center,
+                };
+                var lblNominativi1 = new Label
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = Color.White,
+                    BackgroundColor = Color.Chocolate,
+                    Text = "Stato"
+                };
+                var lblNominativi2 = new Label
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    BackgroundColor = Color.Chocolate,
+                    Text = "Ingresso"
+                };
+                var lblNominativi3 = new Label
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    BackgroundColor = Color.Chocolate,
+                    Text = "In visita"
+                };
+                var lblNominativi4 = new Label
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    BackgroundColor = Color.Chocolate,
+                    Text = "Attesa referti"
+                };
+                var lblNominativi5 = new Label
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    BackgroundColor = Color.Chocolate,
+                    Text = "Attesa Dim."
+                };
 
-                        FontAttributes = FontAttributes.Bold,
-                        BackgroundColor = Color.Chocolate,
-                        Text = "Attesa referti"
-                    };
-                    var lblNominativi5 = new Label
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        FontAttributes = FontAttributes.Bold,
-                        BackgroundColor = Color.Chocolate,
-                        Text = "Attesa Dim."
-                    };
-
-                    grigliaPrincipale.Children.Add(lblNominativi, 0, 0);
+                grigliaPrincipale.Children.Add(lblNominativi, 0, 0);
                     grigliaPrincipale.Children.Add(lblNominativi1, 1, 0);
                     grigliaPrincipale.Children.Add(lblNominativi2, 2, 0);
                     grigliaPrincipale.Children.Add(lblNominativi3, 3, 0);
@@ -574,6 +590,7 @@ namespace PsMonitorList.Services
                         FontAttributes = FontAttributes.Bold,
                         Text = Appoggio[j].salaprimotriage + "\n" + Appoggio[j].stato,
                         TextColor = Color.Black,
+                        FontSize = 15,
                         BackgroundColor = Color.LightGray
 
                     };
@@ -593,6 +610,8 @@ namespace PsMonitorList.Services
                         FontAttributes = FontAttributes.Bold,
                         Text = Appoggio[j].dataaccettazione + "\n" + Appoggio[j].oraaccettazione,
                         TextColor = Color.Black,
+                        FontSize = 15,
+
                         BackgroundColor = color
                     };
                     if (Appoggio[j].stato.Equals("In Visita"))
@@ -609,6 +628,8 @@ namespace PsMonitorList.Services
                         VerticalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         FontAttributes = FontAttributes.Bold,
+                        FontSize = 15,
+
                         Text = Appoggio[j].datapresaincarico + "\n" + Appoggio[j].orapresaincarico,
                         TextColor = Color.Black,
                         BackgroundColor = color
@@ -627,6 +648,8 @@ namespace PsMonitorList.Services
                         VerticalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         FontAttributes = FontAttributes.Bold,
+                        FontSize = 15,
+
                         Text = Appoggio[j].dataprimarichiesta + "\n" + Appoggio[j].oraprimarichiesta,
                         TextColor = Color.Black,
                         BackgroundColor = color
@@ -646,6 +669,8 @@ namespace PsMonitorList.Services
                         VerticalTextAlignment = TextAlignment.Center,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         FontAttributes = FontAttributes.Bold,
+                        FontSize = 15,
+
                         Text = Appoggio[j].datadimissione + "\n" + Appoggio[j].oradimissione,
                         TextColor = Color.Black,
                         BackgroundColor = color
