@@ -86,12 +86,15 @@ namespace PsMonitorList
                     }
                     if (SlidePosition == MainPageGrid.Count)
                     {
+                        if (MainPageGrid.Count == 1)
+                        {
+                            riempimento();
+                        }
                         SlidePosition = 0;
                         Carousel.Position = SlidePosition;
                         visualizza();
                         return false;
                     }
-
                     Carousel.Position = SlidePosition;
                     return true;
                 });
