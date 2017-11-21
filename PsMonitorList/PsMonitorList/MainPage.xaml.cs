@@ -62,6 +62,7 @@ namespace PsMonitorList
         public async void visualizza()
         {
             Flag = 1;
+            int time = 15;
             Boolean flagPage = false;
             int SlidePosition;
 
@@ -79,13 +80,14 @@ namespace PsMonitorList
                 Carousel.IsEnabled = false;
 
 
-                Device.StartTimer(TimeSpan.FromSeconds(15), () =>
+                Device.StartTimer(TimeSpan.FromSeconds(time), () =>
                 {
                     SlidePosition++;
                     if (SlidePosition == count - 1)
                     {
                         flagPage = true;
                         riempimento();
+                        time = 20;
                     }
                     if (SlidePosition == count || count==0)
                     {
@@ -94,6 +96,7 @@ namespace PsMonitorList
                             SlidePosition = 0;
                             flagPage = true;
                             riempimento();
+                            time = 20;
                         }
                         else
                         {
@@ -112,7 +115,7 @@ namespace PsMonitorList
             else
             {
                 Flag = 0;
-                if (Carousel.Position != MainPageGrid.Count)
+                if (Carousel.Position != count)
                     Carousel.Position++;
                 else Carousel.Position = 0;
 
