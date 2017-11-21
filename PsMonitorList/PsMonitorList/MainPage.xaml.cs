@@ -22,6 +22,7 @@ namespace PsMonitorList
         public  List<Grid> MainPageGrid = new List<Grid>();
         public List<RecordBean> lista = new List<RecordBean>();
         public int Flag = 0;
+        private int count = 0;
 
         public MainPage()
         {
@@ -61,6 +62,7 @@ namespace PsMonitorList
         public async void visualizza()
         {
             Flag = 1;
+            Boolean flagPage = false;
             int SlidePosition;
 
             if (lista!=null)
@@ -70,7 +72,7 @@ namespace PsMonitorList
                 CaricamentoPagina.IsRunning = false;
 
                 MainPageGrid = null;
-
+                Carousel.ItemsSource = null;
                 MainPageGrid = await crea.creazioneGriglia(lista);
                 Carousel.ItemsSource = MainPageGrid;
                 Carousel.ItemTemplate = GetDataTemplate();
@@ -80,21 +82,29 @@ namespace PsMonitorList
                 Device.StartTimer(TimeSpan.FromSeconds(15), () =>
                 {
                     SlidePosition++;
-                    if (SlidePosition == MainPageGrid.Count-1)
+                    if (SlidePosition == count - 1)
                     {
+                        flagPage = true;
                         riempimento();
                     }
-                    if (SlidePosition == MainPageGrid.Count)
+                    if (SlidePosition == count || count==0)
                     {
-                        if (MainPageGrid.Count == 1)
+                        if (count == 0 && flagPage==false)
                         {
+                            SlidePosition = 0;
+                            flagPage = true;
                             riempimento();
                         }
-                        SlidePosition = 0;
-                        Carousel.Position = SlidePosition;
-                        visualizza();
-                        return false;
+                        else
+                        {
+                            SlidePosition = 0;
+                            Carousel.Position = SlidePosition;
+                            visualizza();
+                            return false;
+                        }
+
                     }
+                    
                     Carousel.Position = SlidePosition;
                     return true;
                 });
@@ -115,7 +125,7 @@ namespace PsMonitorList
         
         public DataTemplate GetDataTemplate()
         {
-            int count = 0;
+            count = 0;
             return new DataTemplate(() =>
             {
                 Grid g = MainPageGrid[count];
