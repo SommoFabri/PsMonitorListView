@@ -115,7 +115,7 @@ namespace PsMonitorList
             else
             {
                 Flag = 0;
-                if (Carousel.Position != count)
+                if (Carousel.Position != count || count==0)
                     Carousel.Position++;
                 else Carousel.Position = 0;
 
